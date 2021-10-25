@@ -53,6 +53,6 @@ Tapez les commandes suivantes:
  exit
 
 * Ajouter Maven au PATH :
-nano $HOME/.profile
+ nano $HOME/.profile
     
-export PATH=$PATH:/opt/apache-maven/bin
+ export PATH=$PATH:/opt/apache-maven/bin
