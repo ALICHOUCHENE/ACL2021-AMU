@@ -14,45 +14,45 @@ Equipe:Oumnia, Maha, Ali, Mahdi, Moad
 
 ### Installer Maven sur Windows :
 
-* Sur le site officiel de Maven et télécharger le fichier zip Maven.
+* Sur le site officiel de Maven et tÃ©lÃ©charger le fichier zip Maven.
 
 * Extractez le fichier zip.
 
-* Appuyez sur la touche Windows, et cherchez l'option «Afficher les paramètres système avancés». 
+* Appuyez sur la touche Windows, et cherchez l'option Â«Afficher les paramÃ¨tres systÃ¨me avancÃ©sÂ». 
 
-* Dans la boîte de dialogue Propriétés système, sélectionnez l’onglet "Avancé" et cliquez sur le bouton "Variables d’environnement".
+* Dans la boÃ®te de dialogue PropriÃ©tÃ©s systÃ¨me, sÃ©lectionnez lâ€™onglet "AvancÃ©" et cliquez sur le bouton "Variables dâ€™environnement".
 
-* Dans la boîte de dialogue "Variables d’environnement", Variables système , Cliquez sur le bouton "Nouveau..." et ajoutez une variable MAVEN_HOME et pointez la sur le fichier que vous avez décompressé.
+* Dans la boÃ®te de dialogue "Variables dâ€™environnement", Variables systÃ¨me , Cliquez sur le bouton "Nouveau..." et ajoutez une variable MAVEN_HOME et pointez la sur le fichier que vous avez dÃ©compressÃ©.
 
-* Dans les variables système, rechercher PATH, cliquez sur le bouton "Editer". Dans la boîte de dialogue "Modifier la varibale d'environnement", cliquez sur le bouton "Nouveau" et ajoutez MAVEN_HOME .
+* Dans les variables systÃ¨me, rechercher PATH, cliquez sur le bouton "Editer". Dans la boÃ®te de dialogue "Modifier la varibale d'environnement", cliquez sur le bouton "Nouveau" et ajoutez MAVEN_HOME .
 
 
 ### Installer Maven sur Linux :
 Tapez les commandes suivantes:
 
-*sudo apt-get remove maven2
+* sudo apt-get remove maven2
 
-*sudo apt-get update
+* sudo apt-get update
 
-*sudo apt-get install maven
+* sudo apt-get install maven
 
 
 ### Installer Maven sur Mac :
 
-* Aller sur le site officiel de Maven et télécharger le fichier Maven.
+* Aller sur le site officiel de Maven et tÃ©lÃ©charger le fichier Maven.
 
-* Décompreser le fichier.
+* DÃ©compreser le fichier.
 
 * Fixer les permissions :
-    >chown -R root:wheel Downloads/apache-maven*
+ chown -R root:wheel Downloads/apache-maven*
 
 * Changer de place le contenu de Maven :
-    >mv Downloads/apache-maven* /opt/apache-maven
+ mv Downloads/apache-maven* /opt/apache-maven
 
 * Archiver la session :
-    >exit
+ exit
 
 * Ajouter Maven au PATH :
-    >nano $HOME/.profile
+nano $HOME/.profile
     
-    >export PATH=$PATH:/opt/apache-maven/bin
+export PATH=$PATH:/opt/apache-maven/bin
