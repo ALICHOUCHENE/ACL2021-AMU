@@ -12,8 +12,8 @@ public class Labyrinth {
 		}
 	
 		// this function checks if the hero's movement (x,y) is valid in the labyrinth or not
-		public static boolean validatePos(int xPos, int yPos, int dimx, int dimy) {
-			return (( 0 <= xPos ) && (xPos <= dimx)  && (0 <= yPos) && (yPos <= dimy));
+		public boolean validatePos(int xPos, int yPos) {
+			return (( 0 <= xPos ) && (xPos <= this.getDimX())  && (0 <= yPos) && (yPos <= this.getDimY()));
 		}
 		
 		//getters
@@ -43,7 +43,7 @@ public class Labyrinth {
 			
 			Labyrinth Laby = new  Labyrinth(10, 100);	//create an object Labyrinth, we can change dimx and dimy values here
 			
-			System.out.println("Labyrinth atributes (dimx, dimy) are ( "+  Laby.dimx + " , " + Laby.dimy + " )"); 				// test if the object Labyrinth is created
-			System.out.println("The new position " + xPos + ", " + yPos + " is valid: " + validatePos(xPos,yPos, Laby.dimx, Laby.dimy));  //test if the movement of the hero is valid
+			System.out.println("Labyrinth atributes (dimx, dimy) are ( "+  Laby.dimx + " , " + Laby.dimy + " )"); 		 // test if the object Labyrinth is created
+			System.out.println("The new position " + xPos + ", " + yPos + " is valid: " + Laby.validatePos(xPos,yPos));  //test if the movement of the hero is valid
 		}
 }
