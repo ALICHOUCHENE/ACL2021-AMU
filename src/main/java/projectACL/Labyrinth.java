@@ -35,7 +35,7 @@ public class Labyrinth {
 		}
 		
 
-		
+		/*
 		// main
 		public static void main(String[] args){
 			int xPos=10; 		// should be xPos=Hero.xPos and yPos=Hero.yPos
@@ -46,4 +46,5 @@ public class Labyrinth {
 			System.out.println("Labyrinth atributes (dimx, dimy) are ( "+  Laby.dimx + " , " + Laby.dimy + " )"); 		 // test if the object Labyrinth is created
 			System.out.println("The new position " + xPos + ", " + yPos + " is valid: " + Laby.validatePos(xPos,yPos));  //test if the movement of the hero is valid
 		}
+		 */
 }
