@@ -15,15 +15,25 @@ public class Main {
 		System.out.println("To move right use the ,D, key");
 		System.out.println("");
 		
-		Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-		
-		while (true) {
-			System.out.println(pacman);
-			System.out.println("Enter your move");
-			String userInput = scanner.nextLine();  // Read user input
-			char step = userInput.charAt(0);
-			pacman.move(laby, step);
+		try {
+			Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+			while (true) {
+				System.out.println(pacman);
+				System.out.println("Enter your move");
+				String userInput = scanner.nextLine();  // Read user input
+				try {
+					char step = userInput.charAt(0);
+					pacman.move(laby, step);
+				}
+				catch(Exception e) {
+					System.out.println("please enter a move");
+				}
+			}
 		}
+		catch(Exception e){
+			System.out.println("something went wrong");
+		}
+
 		
 	}
 }

@@ -30,11 +30,11 @@ Equipe:Oumnia, Maha, Ali, Mahdi, Moad
 ### Installer Maven sur Linux :
 Tapez les commandes suivantes:
 
-*sudo apt-get remove maven2
+* sudo apt-get remove maven2
 
-*sudo apt-get update
+* sudo apt-get update
 
-*sudo apt-get install maven
+* sudo apt-get install maven
 
 
 ### Installer Maven sur Mac :
@@ -56,3 +56,12 @@ Tapez les commandes suivantes:
     >nano $HOME/.profile
     
     >export PATH=$PATH:/opt/apache-maven/bin
+    
+## Execution de l'application
+
+```p
+mvn compile
+mvn exec:java -Dexec.mainClass=projectACL.Main
+```
+
+ 
