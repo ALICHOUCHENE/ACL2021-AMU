@@ -6,8 +6,8 @@ public class Main {
 	public static void main(String[] args){
 		
 		Labyrinth laby = new  Labyrinth(10, 100);
-		Hero pacman = new Hero();
-		
+		Hero pacman = new Hero(5,10);
+		Monster monster = new Monster(10,10);
 		System.out.println("Welcome to Pacman");
 		System.out.println("To move up use the ,,Z,, key");
 		System.out.println("To move down use the ,,S,, key");
@@ -19,11 +19,13 @@ public class Main {
 		
 		while (true) {
 			System.out.println(pacman);
+			System.out.println(monster);
 			System.out.println("Enter your move");
 			String userInput = scanner.nextLine();  // Read user input
 			char step = userInput.charAt(0);
 			pacman.move(laby, step);
+			monster.move(laby);
 		}
-		
+	
 	}
 }
