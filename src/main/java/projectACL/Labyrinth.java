@@ -2,13 +2,12 @@ package projectACL;
 
 //class Labyrinth: a maze with 2 dimensions dimx an dimy
 public class Labyrinth {
-		private int dimx;
-		private int dimy;
+		private final static int dimx=25;
+		private final static int dimy=25;
 	
 		// Constructor
 		public  Labyrinth(int dimx, int dimy) {
-			this.dimx=dimx;
-			this.dimy=dimy;	
+			super();
 		}
 	
 		// this function checks if the hero's movement (x,y) is valid in the labyrinth or not
@@ -17,22 +16,14 @@ public class Labyrinth {
 		}
 		
 		//getters
-		public int getDimX() {
-			return this.dimx;
+		public static int getDimX() {
+			return Labyrinth.dimx;
 		}
 		
-		public int getDimY() {
-			return this.dimy;
+		public static int getDimY() {
+			return Labyrinth.dimy;
 		}
 	
-		//setters
-		public void setDimX(int dimx) {
-			this.dimx=dimx;
-		}
-		
-		public void setDimY(int dimy) {
-			this.dimy=dimy;
-		}
 		
 
 		/*

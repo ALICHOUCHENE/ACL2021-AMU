@@ -1,9 +1,17 @@
 package projectACL;
 
+import start.GUI;
+
+import model.PacmanPainter;
+
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args){
+	/*public static void main(String[] args){
+		
+		GUI gui = new GUI();
+		
+		PacmanPainter painter = new PacmanPainter();
 		
 		Labyrinth laby = new  Labyrinth(10, 100);
 		Hero pacman = new Hero();
@@ -35,5 +43,5 @@ public class Main {
 		}
 
 		
-	}
+	}*/
 }
