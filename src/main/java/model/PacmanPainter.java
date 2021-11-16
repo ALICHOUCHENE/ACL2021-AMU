@@ -4,7 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import projectACL.Hero;
+
 import engine.GamePainter;
+
+import projectACL.Labyrinth;
+import projectACL.Tile;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -14,11 +19,8 @@ import engine.GamePainter;
  */
 public class PacmanPainter implements GamePainter {
 
-	/**
-	 * la taille des cases
-	 */
-	protected static final int WIDTH = 100;
-	protected static final int HEIGHT = 100;
+	
+	Hero pacman;
 
 	/**
 	 * appelle constructeur parent
@@ -26,7 +28,8 @@ public class PacmanPainter implements GamePainter {
 	 * @param game
 	 *            le jeutest a afficher
 	 */
-	public PacmanPainter() {
+	public PacmanPainter(Hero pacman) {
+		this.pacman=pacman;
 	}
 
 	/**
@@ -36,17 +39,17 @@ public class PacmanPainter implements GamePainter {
 	public void draw(BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		crayon.setColor(Color.blue);
-		crayon.fillOval(0,0,10,10);
+		crayon.fillOval(pacman.getxPos()*Tile.getLength(),pacman.getyPos()*Tile.getWidth(),Tile.getLength(),Tile.getWidth());
 	}
 
 	@Override
 	public int getWidth() {
-		return WIDTH;
+		return Labyrinth.getDimX()*Tile.getLength();
 	}
 
 	@Override
 	public int getHeight() {
-		return HEIGHT;
+		return Labyrinth.getDimY()*Tile.getWidth();
 	}
 
 }
