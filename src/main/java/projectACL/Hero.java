@@ -20,80 +20,44 @@ public class Hero {
 		
 		
 		//methods
-		/*public void move(Labyrinth laby, char step) {
-			int newXPos= this.getxPos();
-			int newYPos= this.getyPos();
-			
-			//avoid upper and lower case confusion
-			step= Character.toUpperCase(step);
-			
-			switch (step) {
-				//go Up
-				case 'Z':
-					newYPos++;
-					break;
-				// go Down
-				case 'S':
-					newYPos--;
-					break;
-				//go left
-				case 'Q':
-					newXPos--;
-					break;
-				//go right
-				case 'D':
-					newXPos++;
-					break;
-				default:
-					break;		
-			}
-			
-			//check if new position is valid
-			// if it is change the Hero's xPos and yPos accordingly
-			
-			if (laby.validatePos(newXPos,newYPos)) {
-				this.setxPos(newXPos);
-				this.setyPos(newYPos);
-			}
-		}*/
 		
 		//update hero's position
-		public void moveUp(Labyrinth laby) {
+		public void moveUp() {
 			int newYPos= this.getyPos();
 			int newXPos= this.getxPos();
-			newYPos++;
+			newYPos--;
 			//checks if the new position is valid before updating
-			if (laby.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos))
 				this.setyPos(newYPos);
 			else System.out.println(" Hero can't move up ");
 			
 		}
 
-		public void moveDown(Labyrinth laby) {
+		public void moveDown() {
 			int newYPos= this.getyPos();
 			int newXPos= this.getxPos();
-			newYPos--;
-			if (laby.validatePos(newXPos, newYPos))
+			newYPos++;
+			if (Labyrinth.validatePos(newXPos, newYPos))
 				this.setyPos(newYPos);
 			else System.out.println(" Hero can't move down ");
 				
 		}
 		
-		public void moveRight(Labyrinth laby) {
+		public void moveRight() {
 			int newXPos= this.getxPos();
 			int newYPos= this.getyPos();
 			newXPos++;
-			if (laby.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos))
 				this.setxPos(newXPos);
 			else System.out.println(" Hero can't move right ");
 			
 		}
 		
-		public void moveLeft(Labyrinth laby) {
+		public void moveLeft() {
 			int newXPos= this.getxPos();
 			int newYPos= this.getyPos();
 			newXPos--;
-			if (laby.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos))
 				this.setxPos(newXPos);
 			else System.out.println(" Hero can't move left ");
 			

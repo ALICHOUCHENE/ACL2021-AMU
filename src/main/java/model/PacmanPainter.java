@@ -44,12 +44,12 @@ public class PacmanPainter implements GamePainter {
 
 	@Override
 	public int getWidth() {
-		return Labyrinth.getDimX()*Tile.getLength();
+		return (Labyrinth.getDimX()+1)*Tile.getLength();
 	}
 
 	@Override
 	public int getHeight() {
-		return Labyrinth.getDimY()*Tile.getWidth();
+		return (Labyrinth.getDimY()+1)*Tile.getWidth();
 	}
 
 }

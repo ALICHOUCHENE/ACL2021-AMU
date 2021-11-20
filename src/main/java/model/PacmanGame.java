@@ -24,10 +24,11 @@ public class PacmanGame implements Game {
 	 * 
 	 */
 	
-	Hero hero;
-	Labyrinth laby;
+	private Hero hero= new Hero();
+	private Labyrinth laby = new Labyrinth();
 	
-	public PacmanGame(String source) {
+	public PacmanGame(String source, Hero hero) {
+		this.hero=hero;
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
@@ -39,6 +40,7 @@ public class PacmanGame implements Game {
 		} catch (IOException e) {
 			System.out.println("Help not available");
 		}
+		
 		
 		
 	}
@@ -54,19 +56,19 @@ public class PacmanGame implements Game {
 		switch (commande) {
 		
 		case RIGHT:
-			hero.moveRight(laby);
+			hero.moveRight();
 			break;
 			
 		case LEFT:
-			hero.moveLeft(laby);
+			hero.moveLeft();
 		break;
 		
 		case UP:
-			hero.moveUp(laby);
+			hero.moveUp();
 		break;
 		
 		case DOWN:
-			hero.moveDown(laby);
+			hero.moveDown();
 		break;
 		
 		case IDLE:

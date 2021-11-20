@@ -16,7 +16,7 @@ public class Main {
 		
 		Hero pacman = new Hero();
 		// creation du jeu particulier et de son afficheur
-		PacmanGame game = new PacmanGame("helpFilePacman.txt");
+		PacmanGame game = new PacmanGame("helpFilePacman.txt",pacman);
 		PacmanPainter painter = new PacmanPainter(pacman);
 		PacmanController controller = new PacmanController();
 

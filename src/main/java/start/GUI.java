@@ -22,7 +22,7 @@ public class GUI {
 		frame.add(panel, BorderLayout.CENTER);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Mr Pacman Begins");
-		frame.setSize(Labyrinth.getDimX()*Tile.getLength(),Labyrinth.getDimY()*Tile.getWidth());
+		frame.setSize((Labyrinth.getDimX()+1)*Tile.getLength(),Labyrinth.getDimY()*Tile.getWidth());
 		//frame.pack();
 		frame.setVisible(true);
 		
