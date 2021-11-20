@@ -1,11 +1,14 @@
 package model;
 
 import java.io.BufferedReader;
+
 import java.io.FileReader;
 import java.io.IOException;
 
 import engine.Cmd;
 import engine.Game;
+import projectACL.Hero;
+import projectACL.Labyrinth;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -20,6 +23,10 @@ public class PacmanGame implements Game {
 	 * constructeur avec fichier source pour le help
 	 * 
 	 */
+	
+	Hero hero;
+	Labyrinth laby;
+	
 	public PacmanGame(String source) {
 		BufferedReader helpReader;
 		try {
@@ -32,6 +39,8 @@ public class PacmanGame implements Game {
 		} catch (IOException e) {
 			System.out.println("Help not available");
 		}
+		
+		
 	}
 
 	/**
@@ -42,6 +51,27 @@ public class PacmanGame implements Game {
 
 	public void evolve(Cmd commande) {
 		System.out.println("Execute "+commande);
+		switch (commande) {
+		
+		case RIGHT:
+			hero.moveRight(laby);
+			break;
+			
+		case LEFT:
+			hero.moveLeft(laby);
+		break;
+		
+		case UP:
+			hero.moveUp(laby);
+		break;
+		
+		case DOWN:
+			hero.moveDown(laby);
+		break;
+		
+		case IDLE:
+			break;
+		}
 	}
 
 	/**

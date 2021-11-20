@@ -20,7 +20,7 @@ public class Hero {
 		
 		
 		//methods
-		public void move(Labyrinth laby, char step) {
+		/*public void move(Labyrinth laby, char step) {
 			int newXPos= this.getxPos();
 			int newYPos= this.getyPos();
 			
@@ -55,8 +55,52 @@ public class Hero {
 				this.setxPos(newXPos);
 				this.setyPos(newYPos);
 			}
+		}*/
+		
+		//update hero's position
+		public void moveUp(Labyrinth laby) {
+			int newYPos= this.getyPos();
+			int newXPos= this.getxPos();
+			newYPos++;
+			//checks if the new position is valid before updating
+			if (laby.validatePos(newXPos, newYPos))
+				this.setyPos(newYPos);
+			else System.out.println(" Hero can't move up ");
+			
+		}
+
+		public void moveDown(Labyrinth laby) {
+			int newYPos= this.getyPos();
+			int newXPos= this.getxPos();
+			newYPos--;
+			if (laby.validatePos(newXPos, newYPos))
+				this.setyPos(newYPos);
+			else System.out.println(" Hero can't move down ");
+				
 		}
 		
+		public void moveRight(Labyrinth laby) {
+			int newXPos= this.getxPos();
+			int newYPos= this.getyPos();
+			newXPos++;
+			if (laby.validatePos(newXPos, newYPos))
+				this.setxPos(newXPos);
+			else System.out.println(" Hero can't move right ");
+			
+		}
+		
+		public void moveLeft(Labyrinth laby) {
+			int newXPos= this.getxPos();
+			int newYPos= this.getyPos();
+			newXPos--;
+			if (laby.validatePos(newXPos, newYPos))
+				this.setxPos(newXPos);
+			else System.out.println(" Hero can't move left ");
+			
+		}
+		
+		
+		//display hero's position
 		public String toString() {
 	        return "Hero Position: ( " + this.getxPos() + " , " + this.getyPos() + " )";
 	    }
