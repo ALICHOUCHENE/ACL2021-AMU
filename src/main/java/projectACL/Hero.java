@@ -1,21 +1,15 @@
+
 package projectACL;
 
-public class Hero {
-		
-		private int xPos;
-		private int yPos;
-		
-		//constructors
-		public Hero () {
-			super();
-			this.xPos=0;
-			this.yPos=0;
-		}
-		
+public class Hero extends GameCharacter {
+
+	//constructors
+			public Hero () {
+				super();
+			}
+			
 		public Hero(int xPos, int yPos) {
-			super();
-			this.xPos = xPos;
-			this.yPos = yPos;
+			super(xPos,yPos);
 		}
 		
 		
@@ -69,22 +63,7 @@ public class Hero {
 	        return "Hero Position: ( " + this.getxPos() + " , " + this.getyPos() + " )";
 	    }
 		
-		//getters/setters
-		public int getxPos() {
-			return xPos;
-		}
 
-		public void setxPos(int xPos) {
-			this.xPos = xPos;
-		}
-
-		public int getyPos() {
-			return yPos;
-		}
-
-		public void setyPos(int yPos) {
-			this.yPos = yPos;
-		}
 		
 		
 		
