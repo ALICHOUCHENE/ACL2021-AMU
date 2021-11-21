@@ -61,7 +61,7 @@ Tapez les commandes suivantes:
 
 ```p
 mvn compile
-mvn exec:java -Dexec.mainClass=projectACL.Main
+mvn exec:java -Dexec.mainClass=start.Main
 ```
 
  
