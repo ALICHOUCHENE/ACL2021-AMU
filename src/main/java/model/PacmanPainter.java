@@ -9,6 +9,7 @@ import projectACL.Hero;
 import engine.GamePainter;
 
 import projectACL.Labyrinth;
+import projectACL.Monster;
 import projectACL.Tile;
 
 /**
@@ -21,6 +22,7 @@ public class PacmanPainter implements GamePainter {
 
 	
 	Hero pacman;
+	Monster monster;
 
 	/**
 	 * appelle constructeur parent
@@ -28,8 +30,9 @@ public class PacmanPainter implements GamePainter {
 	 * @param game
 	 *            le jeutest a afficher
 	 */
-	public PacmanPainter(Hero pacman) {
+	public PacmanPainter(Hero pacman, Monster monster) {
 		this.pacman=pacman;
+		this.monster=monster;
 	}
 
 	/**
@@ -40,7 +43,12 @@ public class PacmanPainter implements GamePainter {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		crayon.setColor(Color.blue);
 		crayon.fillOval(pacman.getxPos()*Tile.getLength(),pacman.getyPos()*Tile.getWidth(),Tile.getLength(),Tile.getWidth());
+		Graphics2D crayon2 = (Graphics2D) im.getGraphics();
+		crayon.setColor(Color.red);
+		crayon.fillOval(monster.getxPos()*Tile.getLength(),monster.getyPos()*Tile.getWidth(),Tile.getLength(),Tile.getWidth());
 	}
+	
+	
 
 	@Override
 	public int getWidth() {
