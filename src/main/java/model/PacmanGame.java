@@ -1,5 +1,5 @@
 package model;
-
+import java.util.Random;
 import java.io.BufferedReader;
 
 import java.io.FileReader;
@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import engine.Cmd;
 import engine.Game;
+import projectACL.Monster;
 import projectACL.Hero;
 import projectACL.Labyrinth;
 
@@ -25,7 +26,7 @@ public class PacmanGame implements Game {
 	 */
 	
 	private Hero hero= new Hero();
-	private Labyrinth laby = new Labyrinth();
+
 	
 	public PacmanGame(String source, Hero hero) {
 		this.hero=hero;
@@ -40,8 +41,7 @@ public class PacmanGame implements Game {
 		} catch (IOException e) {
 			System.out.println("Help not available");
 		}
-		
-		
+
 		
 	}
 
@@ -74,6 +74,8 @@ public class PacmanGame implements Game {
 		case IDLE:
 			break;
 		}
+		// evolve monster
+		
 	}
 
 	/**
