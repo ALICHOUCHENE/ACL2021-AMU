@@ -3,9 +3,13 @@ package projectACL;
 //class Labyrinth: a maze with 2 dimensions dimx an dimy
 public class Labyrinth {
 		
-		private final static int dimx=25;
-		private final static int dimy=25;
-		private Tile[][] level= new Tile[dimx][dimy];
+		private final static int dimx=12;
+		private final static int dimy=12;
+		private Tile[][] build= new Tile[dimx][dimy];
+		private String level;
+		private int [] startPos= new int [2];
+		private int [] endPos= new int [2];
+		
 	
 		// Constructor
 		public  Labyrinth() {
@@ -24,6 +28,31 @@ public class Labyrinth {
 		
 		public static int getDimY() {
 			return Labyrinth.dimy;
+		}
+
+
+		public String getLevel() {
+			return level;
+		}
+
+		public void setLevel(String level) {
+			this.level = level;
+		}
+
+		public int [] getStartPos() {
+			return startPos;
+		}
+
+		public void setStartPos(int [] startPos) {
+			this.startPos = startPos;
+		}
+
+		public int [] getEndPos() {
+			return endPos;
+		}
+
+		public void setEndPos(int [] endPos) {
+			this.endPos = endPos;
 		}
 	
 }

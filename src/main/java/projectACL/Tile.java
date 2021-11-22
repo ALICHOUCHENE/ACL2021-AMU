@@ -3,8 +3,8 @@ package projectACL;
 
 public abstract class Tile {
 
-	protected static final int length = 20;
-	protected static final int width = 20;
+	protected static final int length = 60;
+	protected static final int width = 60;
 	private boolean canWalkOn;
 	private boolean finishesGame;
 	private String imageSource;
@@ -18,12 +18,12 @@ public abstract class Tile {
 		this.imageSource = imageSource;
 	}
 
-	public boolean isFinishesGame() {
-		return finishesGame;
-	}
-
 	public void setFinishesGame(boolean finishesGame) {
 		this.finishesGame = finishesGame;
+	}
+	
+	public boolean isFinishesGame() {
+		return finishesGame;
 	}
 
 	public Tile() {
