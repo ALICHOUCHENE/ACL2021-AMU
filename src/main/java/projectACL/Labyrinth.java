@@ -2,8 +2,10 @@ package projectACL;
 
 //class Labyrinth: a maze with 2 dimensions dimx an dimy
 public class Labyrinth {
+		
 		private final static int dimx=25;
 		private final static int dimy=25;
+		private Tile[][] level= new Tile[dimx][dimy];
 	
 		// Constructor
 		public  Labyrinth() {
