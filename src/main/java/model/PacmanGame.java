@@ -25,7 +25,7 @@ public class PacmanGame implements Game {
 	 */
 	
 	private Hero hero= new Hero();
-	private Labyrinth laby = new Labyrinth();
+	public static Labyrinth laby = new Labyrinth();
 	
 	public PacmanGame(String source, Hero hero) {
 		this.hero=hero;
