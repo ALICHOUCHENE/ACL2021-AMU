@@ -24,10 +24,10 @@ public class PacmanGame implements Game {
 	 * 
 	 */
 	
-	private Hero hero= new Hero();
-	private Labyrinth laby = new Labyrinth();
+	private Hero hero;
+	private Labyrinth laby;
 	
-	public PacmanGame(String source, Hero hero) {
+	public PacmanGame(String source, Hero hero, Labyrinth laby) {
 		this.hero=hero;
 		BufferedReader helpReader;
 		try {
@@ -52,7 +52,7 @@ public class PacmanGame implements Game {
 	 */
 
 	public void evolve(Cmd commande) {
-		System.out.println("Execute "+commande);
+		//System.out.println("Execute "+commande);
 		switch (commande) {
 		
 		case RIGHT:

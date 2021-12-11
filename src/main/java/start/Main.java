@@ -5,6 +5,7 @@ import engine.GameEngineGraphical;
 import model.PacmanController;
 import model.PacmanGame;
 
+import projectACL.Labyrinth;
 import projectACL.Hero;
 
 /**
@@ -14,9 +15,11 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-		Hero pacman = new Hero();
+		Hero pacman = new Hero(0,1);
+		Labyrinth laby = new Labyrinth(1);			
+		
 		// creation du jeu particulier et de son afficheur
-		PacmanGame game = new PacmanGame("helpFilePacman.txt",pacman);
+		PacmanGame game = new PacmanGame("helpFilePacman.txt",pacman, laby);
 		PacmanPainter painter = new PacmanPainter(pacman);
 		PacmanController controller = new PacmanController();
 

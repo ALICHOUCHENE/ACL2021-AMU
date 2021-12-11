@@ -8,8 +8,17 @@ public abstract class Tile {
 	private boolean canWalkOn;
 	private boolean finishesGame;
 	private String imageSource;
+	private String type;
 	
 	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getImageSource() {
 		return imageSource;
 	}
