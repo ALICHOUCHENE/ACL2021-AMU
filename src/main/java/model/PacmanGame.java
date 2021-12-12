@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import engine.Cmd;
 import engine.Game;
 import projectACL.Hero;
 import projectACL.Labyrinth;
+import projectACL.Monster;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -26,9 +28,10 @@ public class PacmanGame implements Game {
 	
 	private Hero hero;
 	private Labyrinth laby;
+	public ArrayList<Monster> monstres;
 	
-	public PacmanGame(String source, Hero hero, Labyrinth laby) {
-		this.hero=hero;
+	public PacmanGame(String source) {
+
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
@@ -41,6 +44,9 @@ public class PacmanGame implements Game {
 			System.out.println("Help not available");
 		}
 		
+		this.laby=new Labyrinth(1);
+		this.hero= this.generateHero();
+		this.monstres=this.generateMonsters();
 		
 		
 	}
@@ -85,5 +91,37 @@ public class PacmanGame implements Game {
 		
 		return false;
 	}
+	
+	private Hero generateHero() {
+		Hero pacman;
+		int[] pacmanPos= laby.getHeroSpawn();
+		pacman= new Hero(pacmanPos[0],pacmanPos[1]);
+		return(pacman);
+	}
+	
+	private ArrayList<Monster> generateMonsters(){
+		ArrayList<int[]> monsterSpawn = laby.getMonsterSpawn();
+		ArrayList<Monster> monsters= new ArrayList<Monster>();
+		int[] pos;
+		for (int i=0;i<monsterSpawn.size();i++) {
+			pos=monsterSpawn.get(i);
+			monsters.add(new Monster(pos[0],pos[1]));
+		}
+		return(monsters);
+	}
+
+	public Hero getHero() {
+		return hero;
+	}
+
+	public Labyrinth getLaby() {
+		return laby;
+	}
+
+	public ArrayList<Monster> getMonstres() {
+		return monstres;
+	}
+	
+	
 
 }

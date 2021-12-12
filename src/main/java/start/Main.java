@@ -14,13 +14,13 @@ import projectACL.Hero;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-		
+		/*
 		Hero pacman = new Hero(0,1);
 		Labyrinth laby = new Labyrinth(1);			
-		
+		*/
 		// creation du jeu particulier et de son afficheur
-		PacmanGame game = new PacmanGame("helpFilePacman.txt",pacman, laby);
-		PacmanPainter painter = new PacmanPainter(pacman);
+		PacmanGame game = new PacmanGame("helpFilePacman.txt");
+		PacmanPainter painter = new PacmanPainter(game);
 		PacmanController controller = new PacmanController();
 
 		// classe qui lance le moteur de jeu generique

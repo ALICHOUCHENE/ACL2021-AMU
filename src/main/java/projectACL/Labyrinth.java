@@ -16,7 +16,7 @@ public class Labyrinth {
 		private static Tile[][] build= new Tile[dimx][dimy];
 				
 		private int [] heroSpawn;
-		public ArrayList<int[]> monsterSpawn=new ArrayList<int[]>();
+		private ArrayList<int[]> monsterSpawn=new ArrayList<int[]>();
 		
 	
 		// Constructor
@@ -105,5 +105,13 @@ public class Labyrinth {
 			return build;
 		}
 
+		public int[] getHeroSpawn() {
+			return heroSpawn;
+		}
+
+		public ArrayList<int[]> getMonsterSpawn() {
+			return monsterSpawn;
+		}
+		
 	
 }

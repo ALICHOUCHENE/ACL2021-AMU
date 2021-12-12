@@ -28,8 +28,8 @@ public class PacmanPainter implements GamePainter {
 	 * @param game
 	 *            le jeutest a afficher
 	 */
-	public PacmanPainter(Hero pacman) {
-		this.pacman=pacman;
+	public PacmanPainter(PacmanGame game) {
+		this.pacman=game.getHero();
 	}
 
 	/**
