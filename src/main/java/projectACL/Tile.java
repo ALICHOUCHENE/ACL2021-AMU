@@ -1,5 +1,6 @@
 package projectACL;
 
+import java.awt.Color;
 
 public abstract class Tile {
 
@@ -9,6 +10,7 @@ public abstract class Tile {
 	private boolean finishesGame;
 	private String imageSource;
 	private String type;
+	private Color color;
 	
 	
 	public String getType() {
@@ -53,6 +55,14 @@ public abstract class Tile {
 
 	public static int getWidth() {
 		return width;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
 	}
 	
 	
