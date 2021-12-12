@@ -30,7 +30,14 @@ public class Labyrinth {
 				LabReader.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				try {
+					String source = "main/java/levels/level_"+level+".txt";
+					LabReader = new BufferedReader(new FileReader(source));
+					this.setCases(LabReader);
+					LabReader.close();
+				}catch(IOException ex) {
+					ex.printStackTrace();
+				}
 			}
 		}
 
