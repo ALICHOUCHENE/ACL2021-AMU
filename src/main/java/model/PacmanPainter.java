@@ -28,8 +28,8 @@ public class PacmanPainter implements GamePainter {
 	 * @param game
 	 *            le jeutest a afficher
 	 */
-	public PacmanPainter(Hero pacman) {
-		this.pacman=pacman;
+	public PacmanPainter(PacmanGame game) {
+		this.pacman=game.getHero();
 	}
 
 	/**
@@ -44,12 +44,12 @@ public class PacmanPainter implements GamePainter {
 
 	@Override
 	public int getWidth() {
-		return (Labyrinth.getDimX()+1)*Tile.getLength();
+		return (Labyrinth.getDimX())*Tile.getLength();
 	}
 
 	@Override
 	public int getHeight() {
-		return (Labyrinth.getDimY()+1)*Tile.getWidth();
+		return (Labyrinth.getDimY())*Tile.getWidth();
 	}
 
 }
