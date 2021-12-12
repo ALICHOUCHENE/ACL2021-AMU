@@ -29,7 +29,8 @@ public class PacmanGame implements Game {
 
 	private Hero hero;
 	private Labyrinth laby;
-	public ArrayList<Monster> monstres;
+	public ArrayList<Monster> monsters;
+	private long gameTime;
 
 	
 	public PacmanGame(String source) {
@@ -48,9 +49,9 @@ public class PacmanGame implements Game {
 		
 		this.laby=new Labyrinth(1);
 		this.hero= this.generateHero();
-		this.monstres=this.generateMonsters();
+		this.monsters=this.generateMonsters();
 		
-		
+		this.gameTime=System.currentTimeMillis();
 	}
 
 	/**
@@ -82,6 +83,8 @@ public class PacmanGame implements Game {
 		case IDLE:
 			break;
 		}
+		
+		moveMonsters();
 	}
 
 	/**
@@ -111,6 +114,16 @@ public class PacmanGame implements Game {
 		}
 		return(monsters);
 	}
+	
+	private void moveMonsters() {
+		long currTime= System.currentTimeMillis();
+		if(currTime-gameTime>500) {
+			for(int i = 0; i<monsters.size();i++) {
+				monsters.get(i).move(laby);
+			}
+		this.gameTime= System.currentTimeMillis();
+		}
+	}
 
 	public Hero getHero() {
 		return hero;
@@ -121,7 +134,7 @@ public class PacmanGame implements Game {
 	}
 
 	public ArrayList<Monster> getMonstres() {
-		return monstres;
+		return monsters;
 	}
 	
 	

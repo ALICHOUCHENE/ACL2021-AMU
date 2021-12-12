@@ -36,9 +36,6 @@ public class Labyrinth {
 
 		// this function checks if the hero's movement (x,y) is valid in the labyrinth or not
 		public static boolean validatePos(int xPos, int yPos) {
-			System.out.println(xPos);
-			System.out.println(yPos);
-			System.out.println(build[yPos][xPos].getType());
 			return (( 0 <= xPos ) && (xPos < Labyrinth.dimx)  && (0 <= yPos) && (yPos < Labyrinth.dimy)&&(build[yPos][xPos].isCanWalkOn()));
 		}
 		
