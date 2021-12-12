@@ -30,9 +30,9 @@ public class PacmanPainter implements GamePainter {
 	 * @param game
 	 *            le jeutest a afficher
 	 */
-	public PacmanPainter(Hero pacman, Monster monster) {
-		this.pacman=pacman;
-		this.monster=monster;
+
+	public PacmanPainter(PacmanGame game) {
+		this.pacman=game.getHero();
 	}
 
 	/**
@@ -43,21 +43,18 @@ public class PacmanPainter implements GamePainter {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		crayon.setColor(Color.blue);
 		crayon.fillOval(pacman.getxPos()*Tile.getLength(),pacman.getyPos()*Tile.getWidth(),Tile.getLength(),Tile.getWidth());
-		Graphics2D crayon2 = (Graphics2D) im.getGraphics();
-		crayon.setColor(Color.red);
-		crayon.fillOval(monster.getxPos()*Tile.getLength(),monster.getyPos()*Tile.getWidth(),Tile.getLength(),Tile.getWidth());
 	}
 	
 	
 
 	@Override
 	public int getWidth() {
-		return (Labyrinth.getDimX()+1)*Tile.getLength();
+		return (Labyrinth.getDimX())*Tile.getLength();
 	}
 
 	@Override
 	public int getHeight() {
-		return (Labyrinth.getDimY()+1)*Tile.getWidth();
+		return (Labyrinth.getDimY())*Tile.getWidth();
 	}
 
 }
