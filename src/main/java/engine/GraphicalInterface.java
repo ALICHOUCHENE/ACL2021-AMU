@@ -47,4 +47,7 @@ public class GraphicalInterface  {
 		this.panel.drawGame();	
 	}
 	
+	
+	
+	
 }
