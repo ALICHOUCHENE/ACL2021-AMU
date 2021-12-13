@@ -4,11 +4,13 @@ import java.io.BufferedReader;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import engine.Cmd;
 import engine.Game;
 import projectACL.Hero;
 import projectACL.Labyrinth;
+import projectACL.Monster;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -24,11 +26,15 @@ public class PacmanGame implements Game {
 	 * 
 	 */
 	
-	private Hero hero= new Hero();
-	private Labyrinth laby = new Labyrinth();
+
+	private Hero hero;
+	private Labyrinth laby;
+	public ArrayList<Monster> monsters;
+	private long gameTime;
+
 	
-	public PacmanGame(String source, Hero hero) {
-		this.hero=hero;
+	public PacmanGame(String source) {
+
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
@@ -41,8 +47,11 @@ public class PacmanGame implements Game {
 			System.out.println("Help not available");
 		}
 		
+		this.laby=new Labyrinth(1);
+		this.hero= this.generateHero();
+		this.monsters=this.generateMonsters();
 		
-		
+		this.gameTime=System.currentTimeMillis();
 	}
 
 	/**
@@ -52,7 +61,7 @@ public class PacmanGame implements Game {
 	 */
 
 	public void evolve(Cmd commande) {
-		System.out.println("Execute "+commande);
+		//System.out.println("Execute "+commande);
 		switch (commande) {
 		
 		case RIGHT:
@@ -74,6 +83,8 @@ public class PacmanGame implements Game {
 		case IDLE:
 			break;
 		}
+		
+		moveMonsters();
 	}
 
 	/**
@@ -84,5 +95,47 @@ public class PacmanGame implements Game {
 		// le jeu n'est jamais fini
 		return false;
 	}
+	
+	private Hero generateHero() {
+		Hero pacman;
+		int[] pacmanPos= laby.getHeroSpawn();
+		pacman= new Hero(pacmanPos[0],pacmanPos[1]);
+		return(pacman);
+	}
+	
+	private ArrayList<Monster> generateMonsters(){
+		ArrayList<int[]> monsterSpawn = laby.getMonsterSpawn();
+		ArrayList<Monster> monsters= new ArrayList<Monster>();
+		int[] pos;
+		for (int i=0;i<monsterSpawn.size();i++) {
+			pos=monsterSpawn.get(i);
+			monsters.add(new Monster(pos[0],pos[1]));
+		}
+		return(monsters);
+	}
+	
+	private void moveMonsters() {
+		long currTime= System.currentTimeMillis();
+		if(currTime-gameTime>500) {
+			for(int i = 0; i<monsters.size();i++) {
+				monsters.get(i).move(laby);
+			}
+		this.gameTime= System.currentTimeMillis();
+		}
+	}
+
+	public Hero getHero() {
+		return hero;
+	}
+
+	public Labyrinth getLaby() {
+		return laby;
+	}
+
+	public ArrayList<Monster> getMonstres() {
+		return monsters;
+	}
+	
+	
 
 }
