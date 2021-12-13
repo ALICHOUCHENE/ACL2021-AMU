@@ -1,6 +1,6 @@
 package model;
 
-import java.io.BufferedReader;
+import java.io.BufferedReader; 
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -82,7 +82,6 @@ public class PacmanGame implements Game {
 	@Override
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
-		
 		return false;
 	}
 
