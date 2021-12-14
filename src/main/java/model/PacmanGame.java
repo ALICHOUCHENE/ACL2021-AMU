@@ -1,6 +1,9 @@
 package model;
+
 import java.util.Random;
 import java.io.BufferedReader;
+
+import java.io.BufferedReader; 
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -115,6 +118,7 @@ public class PacmanGame implements Game {
 			}
 		}
 		
+
 		return false;
 	}
 	
