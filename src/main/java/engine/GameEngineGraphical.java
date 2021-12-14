@@ -55,7 +55,7 @@ public class GameEngineGraphical {
 		this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
 
 		// boucle de game
-		while (!this.game.isFinished()) {
+		while (!this.game.isFinished() & !game.isGameOver()) {
 			// demande controle utilisateur
 			Cmd c = this.gameController.getCommand();
 			// fait evoluer le game
@@ -65,6 +65,7 @@ public class GameEngineGraphical {
 			// met en attente
 			Thread.sleep(100);
 		}
+		this.gamePainter.drawResult("lose");
 	}
 
 }

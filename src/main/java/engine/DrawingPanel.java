@@ -92,5 +92,7 @@ public class DrawingPanel extends JPanel {
 		g.drawImage(this.currentImage, 0, 0, getWidth(), getHeight(), 0, 0,
 				getWidth(), getHeight(), null);
 	}
+	
+	
 
 }

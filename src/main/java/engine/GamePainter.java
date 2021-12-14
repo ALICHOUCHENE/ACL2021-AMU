@@ -22,5 +22,9 @@ public interface GamePainter {
 	public abstract int getWidth();
 
 	public abstract int getHeight();
+
+	public abstract void drawResult(String result);
+
+	public abstract void drawResult(BufferedImage im, String result);
 	
 }

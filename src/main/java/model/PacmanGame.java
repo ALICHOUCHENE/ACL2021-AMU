@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Random;
+import java.io.BufferedReader;
+
 import java.io.BufferedReader; 
 
 import java.io.FileReader;
@@ -8,6 +11,7 @@ import java.util.ArrayList;
 
 import engine.Cmd;
 import engine.Game;
+import projectACL.Monster;
 import projectACL.Hero;
 import projectACL.Labyrinth;
 import projectACL.Monster;
@@ -27,7 +31,9 @@ public class PacmanGame implements Game {
 	 */
 	
 
-	private Hero hero;
+	private Hero hero= new Hero();
+
+	
 	private Labyrinth laby;
 	public ArrayList<Monster> monsters;
 	private long gameTime;
@@ -46,6 +52,7 @@ public class PacmanGame implements Game {
 		} catch (IOException e) {
 			System.out.println("Help not available");
 		}
+
 		
 		this.laby=new Labyrinth(1);
 		this.hero= this.generateHero();
@@ -83,6 +90,8 @@ public class PacmanGame implements Game {
 		case IDLE:
 			break;
 		}
+		// evolve monster
+		
 		
 		moveMonsters();
 	}
@@ -90,11 +99,32 @@ public class PacmanGame implements Game {
 	/**
 	 * verifier si le jeu est fini
 	 */
+	
 	@Override
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
+		return((Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos())); 
+		//finish line is (Dimx, Dimy)
+		//check GameEngineGraphical if i want to make display changes
+	
+		
+	}
+	
+	
+	public boolean isGameOver() {
+		for(int i = 0; i<monsters.size();i++) {
+			if(monsters.get(i).getxPos()==hero.getxPos() & monsters.get(i).getyPos()==hero.getyPos()) {
+				return true;
+			}
+		}
+		
+
 		return false;
 	}
+	
+	
+	
+	
 	
 	private Hero generateHero() {
 		Hero pacman;
