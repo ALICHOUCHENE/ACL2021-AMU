@@ -50,6 +50,7 @@ Tapez les commandes suivantes:
     >mv Downloads/apache-maven* /opt/apache-maven
 
 * Archiver la session :
+
     >exit
 
 * Ajouter Maven au PATH :
