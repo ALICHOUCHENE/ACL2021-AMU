@@ -8,12 +8,14 @@
 package model;
 
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import Painters.PacmanPainter;
 import Painters.MonsterPainter;
 import Painters.LabyrinthPainter;
+import Painters.ScorePainter;
 
 import engine.GamePainter;
 import projectACL.Hero;
@@ -51,5 +53,16 @@ public class MainPainter implements GamePainter{
 	@Override
 	public int getHeight() {
 		return (Labyrinth.getDimY())*Tile.getWidth();
+	}
+	
+	@Override
+	public void drawResult(BufferedImage im, String result) {
+		ScorePainter.result(im,result);
+	}
+
+
+	@Override
+	public void drawResult(String result) {
+		
 	}
 }

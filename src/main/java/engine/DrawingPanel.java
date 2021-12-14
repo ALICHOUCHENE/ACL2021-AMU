@@ -93,8 +93,6 @@ public class DrawingPanel extends JPanel {
 				getWidth(), getHeight(), null);
 	}
 	
-	public void drawResult(Graphics g, String result) {
-		g.drawString(result, 5, 5);
-	}
+	
 
 }
