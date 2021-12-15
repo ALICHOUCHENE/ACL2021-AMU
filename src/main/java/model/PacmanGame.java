@@ -103,6 +103,8 @@ public class PacmanGame implements Game {
 	@Override
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
+		//TODO increment level ++ , must make level an attribute in Labyrinth
+		//TODO add case level : , in Labyrinth , to decide the text file and the design for each level 
 		return((Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos())); 
 		//finish line is (Dimx, Dimy)
 		//check GameEngineGraphical if i want to make display changes

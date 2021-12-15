@@ -23,6 +23,7 @@ public class Labyrinth {
 
 		public  Labyrinth(int level) {			
 			BufferedReader LabReader;
+			// add case level :each level has a different design 
 			try {
 				String source = "src/main/java/levels/level_"+level+".txt";
 				LabReader = new BufferedReader(new FileReader(source));
