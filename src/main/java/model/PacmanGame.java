@@ -37,6 +37,7 @@ public class PacmanGame implements Game {
 	private Labyrinth laby;
 	public ArrayList<Monster> monsters;
 	private long gameTime;
+	private int [] levelTable= {500,400,300,200,100};
 
 	
 	public PacmanGame(String source) {
@@ -67,7 +68,7 @@ public class PacmanGame implements Game {
 	 * @param commande
 	 */
 
-	public void evolve(Cmd commande) {
+	public void evolve(Cmd commande, int level) {
 		//System.out.println("Execute "+commande);
 		switch (commande) {
 		
@@ -92,10 +93,25 @@ public class PacmanGame implements Game {
 		}
 		// evolve monster
 		
+		if( level>=1 & level<=5) 
+		moveMonsters(levelTable[level-1]);
 		
-		moveMonsters();
+		if (level==6)
+			moveMonsters(levelTable[levelTable.length-1]);
+			//moveFantum();
+		
+		if(level==7)
+			moveMonsters(levelTable[levelTable.length-1]);
+			//moveFantum();
+			//moveBoss();
+			
 	}
 
+	
+	
+	
+	
+	
 	/**
 	 * verifier si le jeu est fini
 	 */
@@ -144,9 +160,9 @@ public class PacmanGame implements Game {
 		return(monsters);
 	}
 	
-	private void moveMonsters() {
+	private void moveMonsters(int time) {
 		long currTime= System.currentTimeMillis();
-		if(currTime-gameTime>500) {
+		if(currTime-gameTime>time) {
 			for(int i = 0; i<monsters.size();i++) {
 				monsters.get(i).move(laby);
 			}
@@ -164,6 +180,12 @@ public class PacmanGame implements Game {
 
 	public ArrayList<Monster> getMonstres() {
 		return monsters;
+	}
+
+
+	public void evolve(Cmd userCmd) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

@@ -44,10 +44,12 @@ public class Monster extends GameCharacter {
 	
 	
 	// choose the next step 1 or -1 for x and y
+	
 	private float randomStep() {
 		Random rand=new Random();
 		float randomStep=0;
 		// define a random step
+		
 		int step=3;
 		do {
 		randomStep=rand.nextInt(step)-1;
@@ -56,7 +58,17 @@ public class Monster extends GameCharacter {
 		return randomStep;
 	}
 	
+	// adding same intelligence to monsters
 	
+	public void moveIntelligent(Hero hero) {
+		int xhero=hero.getxPos();
+		int yhero=hero.getyPos();
+		int xmonster=this.getxPos();
+		int ymonster=this.getyPos();
+		
+		
+		
+	}
 	
 	
 	
