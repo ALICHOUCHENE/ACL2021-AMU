@@ -15,9 +15,6 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		Hero pacman = new Hero();
-
-
 		
 		// creation du jeu particulier et de son afficheur
 		PacmanGame game = new PacmanGame("helpFilePacman.txt");
@@ -30,7 +27,7 @@ public class Main {
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
 		engine.run();
 
-	
+		
 		
 		System.out.println("Dead");
 	
