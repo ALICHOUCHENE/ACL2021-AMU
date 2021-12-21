@@ -165,6 +165,11 @@ public class PacmanGame implements Game {
 	public ArrayList<Monster> getMonstres() {
 		return monsters;
 	}
+
+	public void evolve(Cmd userCmd, int level) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

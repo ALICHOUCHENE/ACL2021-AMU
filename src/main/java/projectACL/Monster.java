@@ -46,8 +46,10 @@ public class Monster extends GameCharacter {
 	// choose the next step 1 or -1 for x and y
 	private float randomStep() {
 		Random rand=new Random();
-		float randomStep=0;
+		int randomStep=0;
+		
 		// define a random step
+		
 		int step=3;
 		do {
 		randomStep=rand.nextInt(step)-1;
