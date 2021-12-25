@@ -20,6 +20,7 @@ public class Hero extends GameCharacter {
 			int newYPos= this.getyPos();
 			int newXPos= this.getxPos();
 			newYPos--;
+			
 			//checks if the new position is valid before updating
 			if (Labyrinth.validatePos(newXPos, newYPos))
 				this.setyPos(newYPos);
@@ -64,6 +65,23 @@ public class Hero extends GameCharacter {
 	    }
 		
 
+		public void strike(GameCharacter character) {
+			
+		}
+		
+		public void teleporte( int x , int y) {
+			int newXPos= x;
+			int newYPos= y;
+			if (Labyrinth.validatePos(newXPos, newYPos)) {
+				this.setxPos(newXPos);
+				this.setyPos(newYPos);
+				
+			}
+		}
+		
+		public void move() {
+		
+		}
 		
 		
 		

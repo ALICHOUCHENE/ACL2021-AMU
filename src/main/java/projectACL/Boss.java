@@ -1,23 +1,65 @@
 package projectACL;
 
-public class Boss extends GameCharacter {
 
-	public Boss() {
+
+		
+
+public class Boss extends Monster{
+	
+	static int strength;
+	
+	
+	//constructors
+	
+	public Boss () {
+		
 		super();
 	}
 	
-	public Boss(int x, int y) {
-		super(x,y);
-	}
+	public Boss(int xPos, int yPos) {
+		
+		super(xPos,yPos);
+}	
 	
 	
-	public void moveBoss() {
-		
-		
-	}
 	
-	public void moveBoss(Hero hero) {
+	
+	
+	
+	
+	
+	public void strike(GameCharacter character) {
+		int damage;
 		
+			
+		}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+	public void teleporte( int x , int y) {
+		
+		int newXPos= x;
+		int newYPos= y;
+		
+		if (Labyrinth.validatePos(newXPos, newYPos)) {
+			this.setxPos(newXPos);
+			this.setyPos(newYPos);
+			
+		}
+			
+
 		
 	}
 	
