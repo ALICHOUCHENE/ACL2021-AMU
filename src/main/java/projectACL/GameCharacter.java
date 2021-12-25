@@ -1,6 +1,6 @@
 package projectACL;
 
-public class GameCharacter {
+abstract class GameCharacter {
 	
 	private int xPos;
 	private int yPos;
@@ -27,4 +27,22 @@ public class GameCharacter {
 	public void setyPos(int yPos) {
 		this.yPos = yPos;
 	}
+
+
+abstract public void move();
+abstract public void strike(GameCharacter character);
+abstract public void teleporte( int x , int y);
+
+
+
+
+
 }
+
+
+
+
+
+
+
+

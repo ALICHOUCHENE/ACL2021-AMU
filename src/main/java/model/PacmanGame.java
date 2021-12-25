@@ -160,11 +160,11 @@ public class PacmanGame implements Game {
 		return(monsters);
 	}
 	
-	private void moveMonsters(int time) {
+	private void moveMonsters(int speed) {
 		long currTime= System.currentTimeMillis();
-		if(currTime-gameTime>time) {
+		if(currTime-gameTime>speed) {
 			for(int i = 0; i<monsters.size();i++) {
-				monsters.get(i).move(laby);
+				monsters.get(i).moveIntelligent(this.getHero());
 			}
 		this.gameTime= System.currentTimeMillis();
 		}
