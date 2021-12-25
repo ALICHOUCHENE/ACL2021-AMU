@@ -56,12 +56,16 @@ public class GameEngineGraphical {
 
 		// boucle de game
 		while (!this.game.isFinished() & !game.isGameOver()) {
+			
 			// demande controle utilisateur
 			Cmd c = this.gameController.getCommand();
+			
 			// fait evoluer le game
 			this.game.evolve(c,3);
+			
 			// affiche le game
 			this.gui.paint();
+			
 			// met en attente
 			Thread.sleep(100);
 		}

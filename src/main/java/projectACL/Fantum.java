@@ -5,14 +5,17 @@ public class Fantum extends Monster{
 	// constructors
 	
 	public Fantum () {
+		
 		super();
 	}
 	
 	public Fantum(int xPos, int yPos) {
+		
 		super(xPos,yPos);
 }	
 
 	public void moveIntelligent(Hero hero) {
+		
 		int [][]map= {
 		     {0,0,0,0,0,0,0,0,0,0,0,0},
 		     {3,1,1,1,1,0,1,1,1,1,1,0},
@@ -27,6 +30,7 @@ public class Fantum extends Monster{
 		     {0,1,1,1,1,1,1,0,1,0,1,2},
 		     {0,0,0,0,0,0,0,0,0,0,0,0}
 	};
+		
 		
 		int xhero=hero.getxPos();
 		int yhero=hero.getyPos();
@@ -54,9 +58,10 @@ public class Fantum extends Monster{
 				newyPos=ymonster;
 				
 			}
-		 else {
+		 else 
+			 
 			 this.move();
-		 }
+		 
 		}
 		
 		
@@ -86,12 +91,15 @@ public class Fantum extends Monster{
 							newyPos=ymonster;
 							
 						}
-					 else {
+					 else 
+						 
 						 this.move();
-					 }
+					 
 					}
 		
+		
 		// move down left
+		
 		
 		if (xhero<=xmonster & yhero>=ymonster) {
 			
@@ -108,9 +116,10 @@ public class Fantum extends Monster{
 					newyPos=ymonster;
 					
 				}
-			 else {
+			 else 
+				 
 				 this.move();
-			 }
+			 
 			}
 		
 		// move down right
@@ -130,9 +139,10 @@ public class Fantum extends Monster{
 					newyPos=ymonster;
 					
 				}
-			 else {
+			 else 
+				 
 				 this.move();
-			 }
+			 
 			}
 		
 		this.setxPos( newxPos);

@@ -1,6 +1,10 @@
 package projectACL;
 import java.util.Random;
 public class Monster extends GameCharacter {
+	
+	static int strength;
+	
+	
 	//constructors
 	
 	public Monster () {
@@ -8,10 +12,12 @@ public class Monster extends GameCharacter {
 	}
 	
 	public Monster(int xPos, int yPos) {
+		
 		super(xPos,yPos);
 }
 
 	public void move() {
+		
 		int newXPos= this.getxPos();
 		int newYPos= this.getyPos();
 		float randomStep;
@@ -39,6 +45,7 @@ public class Monster extends GameCharacter {
 	
 	
 	public String toString() {
+		
         return "Monster Position: ( " + this.getxPos() + " , " + this.getyPos() + " )";
     }
 	
@@ -47,6 +54,7 @@ public class Monster extends GameCharacter {
 	
 	
 	private float randomStep() {
+		
 		Random rand=new Random();
 		float randomStep=0;
 		// define a random step
@@ -63,6 +71,7 @@ public class Monster extends GameCharacter {
 	// adding some intelligence to monsters
 	
 	public void moveIntelligent(Hero hero) {
+		
 		int [][]map= {
 		     {0,0,0,0,0,0,0,0,0,0,0,0},
 		     {3,1,1,1,1,0,1,1,1,1,1,0},
@@ -113,9 +122,10 @@ public class Monster extends GameCharacter {
 				newyPos=ymonster;
 				
 			}
-		 else {
+		 else 
+			 
 			 this.move();
-		 }
+		 
 		}
 		
 		
@@ -145,9 +155,10 @@ public class Monster extends GameCharacter {
 							newyPos=ymonster;
 							
 						}
-					 else {
+					 else 
+						 
 						 this.move();
-					 }
+					 
 					}
 		
 		// move down left
@@ -167,9 +178,10 @@ public class Monster extends GameCharacter {
 					newyPos=ymonster;
 					
 				}
-			 else {
+			 else 
+				 
 				 this.move();
-			 }
+			 
 			}
 		
 		// move down right
@@ -189,9 +201,10 @@ public class Monster extends GameCharacter {
 					newyPos=ymonster;
 					
 				}
-			 else {
+			 else 
+				 
 				 this.move();
-			 }
+			 
 			}
 		
 		
