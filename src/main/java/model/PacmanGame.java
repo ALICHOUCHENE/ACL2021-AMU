@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import engine.Cmd;
 import engine.Game;
 import projectACL.Monster;
+import projectACL.Bullet;
 import projectACL.Hero;
 import projectACL.Labyrinth;
 import projectACL.Monster;
@@ -32,10 +33,9 @@ public class PacmanGame implements Game {
 	
 
 	private Hero hero= new Hero();
-
-	
 	private Labyrinth laby;
-	public ArrayList<Monster> monsters;
+	private ArrayList<Monster> monsters;
+	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	private long gameTime;
 
 	
@@ -57,7 +57,6 @@ public class PacmanGame implements Game {
 		this.laby=new Labyrinth(1);
 		this.hero= this.generateHero();
 		this.monsters=this.generateMonsters();
-		
 		this.gameTime=System.currentTimeMillis();
 	}
 
@@ -68,7 +67,7 @@ public class PacmanGame implements Game {
 	 */
 
 	public void evolve(Cmd commande) {
-		//System.out.println("Execute "+commande);
+
 		switch (commande) {
 		
 		case RIGHT:
@@ -87,13 +86,18 @@ public class PacmanGame implements Game {
 			hero.moveDown();
 		break;
 		
+		case SHOOT:
+			this.generateBullet();
+		break;
+		
 		case IDLE:
 			break;
 		}
-		// evolve monster
-		
-		
+		// evolve monsters
 		moveMonsters();
+		
+		// evolve bullets
+		moveBullets();
 	}
 
 	/**
@@ -146,13 +150,33 @@ public class PacmanGame implements Game {
 	
 	private void moveMonsters() {
 		long currTime= System.currentTimeMillis();
-		if(currTime-gameTime>500) {
+		if((currTime-gameTime>500)& (!this.monsters.isEmpty())) {
 			for(int i = 0; i<monsters.size();i++) {
 				monsters.get(i).move(laby);
 			}
-		this.gameTime= System.currentTimeMillis();
+			this.gameTime= System.currentTimeMillis();
 		}
 	}
+	
+	private void moveBullets() {
+		if(!this.bullets.isEmpty()) {
+			for(int i = 0; i<bullets.size();i++) {
+				bullets.get(i).evolve(laby);
+				if (!bullets.get(i).isBullet_alive()) {
+					this.bullets.remove(i);
+				}
+			}
+		}
+	}
+	
+	private void generateBullet() {
+		Bullet newBullet = new Bullet(hero,laby);
+		if (newBullet.isBullet_alive()) {
+			this.bullets.add(newBullet);
+		}
+	}
+	
+	//getters and setters
 
 	public Hero getHero() {
 		return hero;
@@ -164,6 +188,10 @@ public class PacmanGame implements Game {
 
 	public ArrayList<Monster> getMonstres() {
 		return monsters;
+	}
+
+	public ArrayList<Bullet> getBullets() {
+		return bullets;
 	}
 	
 	

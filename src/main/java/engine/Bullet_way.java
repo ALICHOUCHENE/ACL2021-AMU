@@ -1,5 +1,5 @@
 package engine;
 
-public class Bullet_way {
-
+public enum Bullet_way {
+	Left,Right,Up,Down;
 }

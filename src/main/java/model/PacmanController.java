@@ -60,21 +60,9 @@ public class PacmanController implements GameController {
 		case KeyEvent.VK_D:
 			this.commandeEnCours = Cmd.RIGHT;
 			break;
-		//command to shoot up
-		case KeyEvent.VK_UP:
-			this.commandeEnCours = Cmd.SHOOT_UP;
-			break;
-		// command to shoot down
-		case KeyEvent.VK_DOWN:
-			this.commandeEnCours = Cmd.SHOOT_DOWN;
-			break;
-		// command to shoot right
-		case KeyEvent.VK_RIGHT:
-			this.commandeEnCours = Cmd.SHOOT_RIGHT;
-			break;
-		// command to shoot left 
-		case KeyEvent.VK_LEFT:
-			this.commandeEnCours = Cmd.SHOOT_LEFT;
+		//command to shoot
+		case KeyEvent.VK_SPACE:
+			this.commandeEnCours = Cmd.SHOOT;
 			break;
 		}
 
