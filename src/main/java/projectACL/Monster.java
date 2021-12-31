@@ -5,12 +5,12 @@ public class Monster extends GameCharacter {
 	
 	public Monster () {
 		super();
-		this.setImageSource("./images/monster.png");
+		this.setImageSource("./images/monster/monster.png");
 	}
 	
 	public Monster(int xPos, int yPos) {
 		super(xPos,yPos);
-		this.setImageSource("./images/monster.png");
+		this.setImageSource("./images/monster/monster.png");
 }
 
 	public void move(Labyrinth laby) {

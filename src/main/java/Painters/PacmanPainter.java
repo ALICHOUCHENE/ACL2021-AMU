@@ -29,7 +29,8 @@ public class PacmanPainter {
 			String Source = (pacman.getImageSource());
 			
 			img=ImageIO.read(new File(Source)); 
-			
+
+//			img = ImageIO.read(new File(herosprite.currentSpriteGet(animationstage, controller.getCommand(),heros.getType())));
 			crayon.drawImage(img, Tile.getLength()* pacman.getxPos(),Tile.getWidth()*pacman.getyPos(),null);
 			
 		} catch (IOException e) {

@@ -10,8 +10,8 @@ import java.util.ArrayList;
 //class Labyrinth: a maze with 2 dimensions dimx an dimy
 public class Labyrinth {
 		
-		private final static int dimx=13;
-		private final static int dimy=13;
+		private final static int dimx=12;
+		private final static int dimy=12;
 
 		
 		private static Tile[][] build= new Tile[dimx][dimy];

@@ -8,12 +8,12 @@ public class Hero extends GameCharacter {
 	//constructors
 			public Hero () {
 				super();
-				this.setImageSource("./images/HeroUP.png");
+				this.setImageSource("./images/hero/IDLE/hero1.png");
 			}
 			
 		public Hero(int xPos, int yPos) {
 			super(xPos,yPos);
-			this.setImageSource("./images/HeroUP.png");
+			this.setImageSource("./images/hero/IDLE/hero1.png");
 		}
 		
 		

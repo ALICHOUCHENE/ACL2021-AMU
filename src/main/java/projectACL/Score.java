@@ -5,6 +5,7 @@ public class Score {
 	
 	private Hero hero;
 	private Monster monster;
+	private Labyrinth laby;
 	private int l; //number of lives
 	
 	// Constructer
@@ -31,20 +32,6 @@ public class Score {
 		return state;
 		
 	}
-	
-	public boolean heroWin() {
-		boolean state=false;
-		if ((hero.getxPos() == 13) && (hero.getyPos()==13)) {
-			state=true;
-			
-		}
-		return state;
-		
-	}
-	
-	
-	
-	
 	
 	
 
