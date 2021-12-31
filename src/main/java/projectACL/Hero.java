@@ -3,17 +3,22 @@ package projectACL;
 
 public class Hero extends GameCharacter {
 
+	
+	
 	//constructors
 			public Hero () {
 				super();
+				this.setImageSource("./images/HeroUP.png");
 			}
 			
 		public Hero(int xPos, int yPos) {
 			super(xPos,yPos);
+			this.setImageSource("./images/HeroUP.png");
 		}
 		
 		
 		//methods
+		
 		
 		//update hero's position
 		public void moveUp() {
@@ -21,8 +26,9 @@ public class Hero extends GameCharacter {
 			int newXPos= this.getxPos();
 			newYPos--;
 			//checks if the new position is valid before updating
-			if (Labyrinth.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos)) {
 				this.setyPos(newYPos);
+				}
 			else System.out.println(" Hero can't move up ");
 			
 		}
@@ -31,8 +37,9 @@ public class Hero extends GameCharacter {
 			int newYPos= this.getyPos();
 			int newXPos= this.getxPos();
 			newYPos++;
-			if (Labyrinth.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos)) {
 				this.setyPos(newYPos);
+			}
 			else System.out.println(" Hero can't move down ");
 				
 		}
@@ -41,8 +48,9 @@ public class Hero extends GameCharacter {
 			int newXPos= this.getxPos();
 			int newYPos= this.getyPos();
 			newXPos++;
-			if (Labyrinth.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos)) {
 				this.setxPos(newXPos);
+			}
 			else System.out.println(" Hero can't move right ");
 			
 		}
@@ -51,11 +59,13 @@ public class Hero extends GameCharacter {
 			int newXPos= this.getxPos();
 			int newYPos= this.getyPos();
 			newXPos--;
-			if (Labyrinth.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos)) {
 				this.setxPos(newXPos);
+			}
 			else System.out.println(" Hero can't move left ");
 			
 		}
+		
 		
 		
 		//display hero's position
@@ -63,7 +73,8 @@ public class Hero extends GameCharacter {
 	        return "Hero Position: ( " + this.getxPos() + " , " + this.getyPos() + " )";
 	    }
 		
-
+	
+		
 		
 		
 		

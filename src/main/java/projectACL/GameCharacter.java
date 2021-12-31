@@ -5,6 +5,8 @@ public class GameCharacter {
 	private int xPos;
 	private int yPos;
 	
+	private String ImageSource;
+	
 	//constructors
 	public GameCharacter () {
 		this.xPos=0;
@@ -27,4 +29,14 @@ public class GameCharacter {
 	public void setyPos(int yPos) {
 		this.yPos = yPos;
 	}
+	
+	public void setImageSource(String ImageSource) {
+		this.ImageSource = ImageSource;
+	}
+	
+	public String getImageSource() {
+		return ImageSource;
+	}
+
+
 }
