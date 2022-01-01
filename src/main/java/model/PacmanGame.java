@@ -2,6 +2,7 @@ package model;
 
 import java.util.Random;
 
+
 import java.io.BufferedReader;
 
 import java.io.BufferedReader; 
@@ -35,7 +36,7 @@ public class PacmanGame implements Game {
 	
 
 	private Hero hero= new Hero();
-	private Door door=new Door();
+	
 
 	
 	private Labyrinth laby;

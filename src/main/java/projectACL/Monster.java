@@ -1,8 +1,10 @@
 package projectACL;
 import java.util.Random;
 public class Monster extends GameCharacter {
-	//constructors
+	
 	String[] frames = { "./images/monster/monster.png", "./images/monster/monster1.png", "./images/monster/monster2.png"};
+	
+	//constructors
 	public Monster () {
 		super();
 		this.setImageSource(frames[0]);
