@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Random;
+
 import java.io.BufferedReader;
 
 import java.io.BufferedReader; 
@@ -12,9 +13,11 @@ import java.util.ArrayList;
 import engine.Cmd;
 import engine.Game;
 import projectACL.Monster;
+import projectACL.Tile;
 import projectACL.Hero;
 import projectACL.Labyrinth;
-import projectACL.Monster;
+import projectACL.Door;
+
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -32,6 +35,7 @@ public class PacmanGame implements Game {
 	
 
 	private Hero hero= new Hero();
+	private Door door=new Door();
 
 	
 	private Labyrinth laby;
@@ -105,8 +109,9 @@ public class PacmanGame implements Game {
 		// le jeu n'est jamais fini
 		//TODO increment level ++ , must make level an attribute in Labyrinth
 		//TODO add case level : , in Labyrinth , to decide the text file and the design for each level 
-
-		return((Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos())); 
+		boolean state=(Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());
+		
+		return(state); 
 		
 		//finish line is (Dimx, Dimy)
 		//check GameEngineGraphical if i want to make display changes
@@ -118,6 +123,7 @@ public class PacmanGame implements Game {
 	public boolean isGameOver() {
 		for(int i = 0; i<monsters.size();i++) {
 			if(monsters.get(i).getxPos()==hero.getxPos() & monsters.get(i).getyPos()==hero.getyPos()) {
+				
 				return true;
 			}
 		}

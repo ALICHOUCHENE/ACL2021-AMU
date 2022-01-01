@@ -10,4 +10,5 @@ public class Door extends Tile{
 		//this.setColor(Color.GREEN);
 		this.setImageSource("./images/door.png");
 	}
+	
 }

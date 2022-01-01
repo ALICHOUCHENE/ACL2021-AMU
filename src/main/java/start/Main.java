@@ -30,8 +30,6 @@ public class Main {
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
 		engine.run();
 
-	
-		
 		System.out.println("Dead");
 	
 

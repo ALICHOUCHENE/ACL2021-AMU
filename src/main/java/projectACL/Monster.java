@@ -2,22 +2,36 @@ package projectACL;
 import java.util.Random;
 public class Monster extends GameCharacter {
 	//constructors
-	
+	String[] frames = { "./images/monster/monster.png", "./images/monster/monster1.png", "./images/monster/monster2.png"};
 	public Monster () {
 		super();
-		this.setImageSource("./images/monster/monster.png");
+		this.setImageSource(frames[0]);
 	}
 	
 	public Monster(int xPos, int yPos) {
 		super(xPos,yPos);
-		this.setImageSource("./images/monster/monster.png");
-}
+		this.setImageSource(frames[0]);
+	}
 
+	
+	// animating the moving of the monster
+	public String getframe() {
+		if (getImageSource()==(frames[0])) {
+			
+			return(frames[1]);
+		}
+		else if (getImageSource()==(frames[1])) {
+			return(frames[2]);
+		}
+		else return(frames[0]);
+	}
+	
 	public void move(Labyrinth laby) {
 		int newXPos= this.getxPos();
 		int newYPos= this.getyPos();
 		float randomStep;
 		Random rand=new Random();
+		
 		
 		// get the next step
 		
@@ -36,6 +50,7 @@ public class Monster extends GameCharacter {
 		if (laby.validatePos(newXPos,newYPos)) {
 			this.setxPos((int) newXPos);
 			this.setyPos((int)newYPos);
+			this.setImageSource(getframe()); // animating the moving of the monster
 		}
 	}
 	
