@@ -1,26 +1,20 @@
 package projectACL;
 
-
-
-		
-
-public class Boss extends Monster{
+public class MonsterIntelligent extends Monster{
 	
-	static int strength;
+static int strength;
 	
 	
 	//constructors
 	
-	public Boss () {
-		
+	public MonsterIntelligent () {
 		super();
 	}
 	
-	public Boss(int xPos, int yPos) {
+	public MonsterIntelligent(int xPos, int yPos) {
 		
 		super(xPos,yPos);
-}	
-	
+}
 public void move(Hero hero) {
 		
 		int [][]map= {
@@ -38,7 +32,6 @@ public void move(Hero hero) {
 		     {0,0,0,0,0,0,0,0,0,0,0,0}
 	};
 		
-		
 		int xhero=hero.getxPos();
 		int yhero=hero.getyPos();
 		int xmonster=this.getxPos();
@@ -46,7 +39,16 @@ public void move(Hero hero) {
 		int newxPos=0;
 		int newyPos=0;
 		
-
+		//System.out.println("***");
+		//System.out.println("pos monster:");
+		//System.out.println(xmonster);
+		//System.out.println(ymonster);
+		//System.out.println(map[ymonster][xmonster]);
+		//System.out.println("***");
+	    System.out.println("pos hero:");
+		System.out.println(xhero);
+		System.out.println(yhero);
+		
 		// move up left
 		
 		if (xhero<=xmonster & yhero<=ymonster) {
@@ -104,9 +106,7 @@ public void move(Hero hero) {
 					 
 					}
 		
-		
 		// move down left
-		
 		
 		if (xhero<=xmonster & yhero>=ymonster) {
 			
@@ -151,57 +151,21 @@ public void move(Hero hero) {
 				 super.move(hero);
 			 
 			}
+		
+		
+		
 		if (Labyrinth.validatePos(newxPos,newyPos)) {
-
-		this.setxPos( newxPos);
-		this.setyPos( newyPos);
-		}
-	
-
-	
-	}	
-	
-	
-	
-	
-	
-	
-	public void strike(GameCharacter character) {
-		int damage;
-		
-			
+			this.setxPos( newxPos);
+			this.setyPos( newyPos);
 		}
 		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-	public void teleporte( int x , int y) {
 		
-		int newXPos= x;
-		int newYPos= y;
 		
-		if (Labyrinth.validatePos(newXPos, newYPos)) {
-			this.setxPos(newXPos);
-			this.setyPos(newYPos);
-			
-		}
-			
-
+		
+		
+		
+		
+		
 		
 	}
-	
-	
-	
-	
 }

@@ -14,22 +14,9 @@ public class Fantum extends Monster{
 		super(xPos,yPos);
 }	
 
-	public void moveIntelligent(Hero hero) {
+	public void move(Hero hero) {
 		
-		int [][]map= {
-		     {0,0,0,0,0,0,0,0,0,0,0,0},
-		     {3,1,1,1,1,0,1,1,1,1,1,0},
-		     {0,1,0,0,0,0,4,0,0,0,1,0},
-		     {0,1,1,1,1,0,1,0,1,0,1,0},
-		     {0,1,0,1,1,0,1,0,1,1,4,0},
-		     {0,0,0,1,4,1,1,0,1,1,1,0},
-		     {0,1,1,1,1,1,1,1,1,0,0,0},
-		     {0,1,0,0,1,0,1,1,1,1,1,0},
-		     {0,1,1,0,1,0,0,0,1,1,1,0},
-		     {0,0,0,0,1,1,1,0,0,0,1,0},
-		     {0,1,1,1,1,1,1,0,1,0,1,2},
-		     {0,0,0,0,0,0,0,0,0,0,0,0}
-	};
+		
 		
 		
 		int xhero=hero.getxPos();
@@ -44,121 +31,61 @@ public class Fantum extends Monster{
 		
 		if (xhero<=xmonster & yhero<=ymonster) {
 		
-		if( map[ymonster][xmonster - 1] == 1 || map[ymonster][xmonster - 1]==3 ) {
 				xmonster--;	
-				newxPos=xmonster;
-				newyPos=ymonster;
-				
-					
-			}
-		 if( map[ymonster - 1][xmonster] == 1 ) {
-			
 				ymonster--;	
 				newxPos=xmonster;
 				newyPos=ymonster;
 				
-			}
-		 else 
-			 
-			 this.move();
-		 
-		}
-		
-		
-		// move up right 
+		}		
 		
 		if (xhero>=xmonster & yhero <= ymonster) {
 					
-					if( map[ymonster][xmonster+1] == 1 || map[ymonster][xmonster+1] == 3) {
-							xmonster++;	
-							newxPos=xmonster;
-							newyPos=ymonster;
+				xmonster++;
+				xmonster--;	
+				newxPos=xmonster;
+				newyPos=ymonster;
 								
-						}
-					
-					if( map[ymonster][xmonster-1] == 1 ) {
-						xmonster--;	
-						newxPos=xmonster;
-						newyPos=ymonster;
-					}
-					
-					
-					
-					 if( map[ymonster-1][xmonster] == 1) {
 						
-							ymonster--;	
-							newxPos=xmonster;
-							newyPos=ymonster;
-							
-						}
-					 else 
-						 
-						 this.move();
-					 
-					}
-		
+		}
 		
 		// move down left
 		
 		
 		if (xhero<=xmonster & yhero>=ymonster) {
 			
-			if( map[ymonster][xmonster-1] == 1 || map[ymonster][xmonster-1] == 3) {
-					xmonster--;	
-					newxPos=xmonster;
-					newyPos=ymonster;
-						
-				}
-			 if( map[ymonster + 1][xmonster] == 1 || map[ymonster + 1][xmonster] == 3) {
-				
-					ymonster++;	
-					newxPos=xmonster;
-					newyPos=ymonster;
+
+				xmonster--;	
+				ymonster++;	
+				newxPos=xmonster;
+				newyPos=ymonster;
 					
-				}
-			 else 
-				 
-				 this.move();
-			 
-			}
-		
-		// move down right
+					
+		}
 		
 		if (xhero>=xmonster & yhero>=ymonster) {
 			
-			if( map[ymonster][xmonster + 1] == 1 || map[ymonster][xmonster + 1] == 3) {
-					xmonster++;	
-					newxPos=xmonster;
-					newyPos=ymonster;
-						
-				}
-			 if( map[ymonster + 1][xmonster] == 1 || map[ymonster + 1][xmonster] == 3) {
-				
-					ymonster++;	
-					newxPos=xmonster;
-					newyPos=ymonster;
-					
-				}
-			 else 
-				 
-				 this.move();
-			 
+				xmonster++;	
+				ymonster++;	
+				newxPos=xmonster;
+				newyPos=ymonster;
+										
+								 
 			}
 		
+		else 
+			super.move(hero);
+		
+		if(newxPos<=11 & newxPos>=0 & newyPos<=11 & newyPos>=0) {
+			
 		this.setxPos( newxPos);
 		this.setyPos( newyPos);
-		
+		}
 	
 	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	}	
 	
 }
+		

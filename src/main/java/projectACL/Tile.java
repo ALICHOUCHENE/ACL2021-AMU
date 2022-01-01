@@ -6,7 +6,7 @@ public abstract class Tile {
 
 	protected static final int length = 60;
 	protected static final int width = 60;
-	private boolean canWalkOn;
+	private boolean canWalkOn=false;
 	private boolean finishesGame;
 	private String imageSource;
 	private String type;

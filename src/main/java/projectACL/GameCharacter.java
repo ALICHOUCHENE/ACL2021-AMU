@@ -29,7 +29,7 @@ abstract class GameCharacter {
 	}
 
 
-abstract public void move();
+abstract public void move(Hero hero);
 abstract public void strike(GameCharacter character);
 abstract public void teleporte( int x , int y);
 

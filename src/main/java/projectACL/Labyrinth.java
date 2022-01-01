@@ -12,7 +12,7 @@ public class Labyrinth {
 		private final static int dimx=12;
 		private final static int dimy=12;
 
-		
+
 		private static Tile[][] build= new Tile[dimx][dimy];
 				
 		private int [] heroSpawn;
@@ -43,7 +43,7 @@ public class Labyrinth {
 
 		// this function checks if the hero's movement (x,y) is valid in the labyrinth or not
 		public static boolean validatePos(int xPos, int yPos) {
-			return (( 0 <= xPos ) && (xPos < Labyrinth.dimx)  && (0 <= yPos) && (yPos < Labyrinth.dimy)&&(build[yPos][xPos].isCanWalkOn()));
+			return (( 0 <= xPos ) && (xPos < Labyrinth.dimx)  && (0 <= yPos) && (yPos < Labyrinth.dimy)&& ( build[yPos][xPos].isCanWalkOn()));
 		}
 		
 		private void setCases(BufferedReader LabReader) throws IOException { 

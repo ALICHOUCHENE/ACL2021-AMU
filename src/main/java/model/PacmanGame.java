@@ -15,6 +15,10 @@ import projectACL.Monster;
 import projectACL.Hero;
 import projectACL.Labyrinth;
 import projectACL.Monster;
+import projectACL.MonsterIntelligent;
+import projectACL.Fantum;
+import projectACL.Boss;
+
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -155,7 +159,7 @@ public class PacmanGame implements Game {
 		int[] pos;
 		for (int i=0;i<monsterSpawn.size();i++) {
 			pos=monsterSpawn.get(i);
-			monsters.add(new Monster(pos[0],pos[1]));
+			monsters.add(new Boss(pos[0],pos[1]));
 		}
 		return(monsters);
 	}
@@ -164,7 +168,7 @@ public class PacmanGame implements Game {
 		long currTime= System.currentTimeMillis();
 		if(currTime-gameTime>speed) {
 			for(int i = 0; i<monsters.size();i++) {
-				monsters.get(i).moveIntelligent(this.getHero());
+				monsters.get(i).move(this.getHero());
 			}
 		this.gameTime= System.currentTimeMillis();
 		}
@@ -183,9 +187,6 @@ public class PacmanGame implements Game {
 	}
 
 
-	public void evolve(Cmd userCmd, int level) {
-
-	}
 	
 	public void evolve(Cmd userCmd) {
 		// TODO Auto-generated method stub

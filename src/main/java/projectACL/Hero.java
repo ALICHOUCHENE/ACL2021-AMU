@@ -79,7 +79,7 @@ public class Hero extends GameCharacter {
 			}
 		}
 		
-		public void move() {
+		public void move(Hero hero) {
 		
 		}
 		
