@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import engine.Cmd;
 import engine.Game;
 import projectACL.Monster;
+import projectACL.Bullet;
 import projectACL.Hero;
 import projectACL.Labyrinth;
 import projectACL.Monster;
@@ -36,10 +37,9 @@ public class PacmanGame implements Game {
 	
 
 	private Hero hero= new Hero();
-
-	
 	private Labyrinth laby;
-	public ArrayList<Monster> monsters;
+	private ArrayList<Monster> monsters;
+	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	private long gameTime;
 	private int [] levelTable= {500,400,300,200,100};
 
@@ -62,7 +62,6 @@ public class PacmanGame implements Game {
 		this.laby=new Labyrinth(1);
 		this.hero= this.generateHero();
 		this.monsters=this.generateMonsters();
-		
 		this.gameTime=System.currentTimeMillis();
 	}
 
@@ -74,6 +73,7 @@ public class PacmanGame implements Game {
 
 	public void evolve(Cmd commande, int level) {
 		//System.out.println("Execute "+commande);
+
 		switch (commande) {
 		
 		case RIGHT:
@@ -92,10 +92,16 @@ public class PacmanGame implements Game {
 			hero.moveDown();
 		break;
 		
+		case SHOOT:
+			this.generateBullet();
+		break;
+		
 		case IDLE:
 			break;
 		}
-		// evolve monster
+		
+		//bullets kill monsters
+		bulletKillMonster();
 		
 		if( level>=1 & level<=5) 
 		moveMonsters(levelTable[level-1]);
@@ -108,7 +114,12 @@ public class PacmanGame implements Game {
 			moveMonsters(levelTable[levelTable.length-1]);
 			//moveFantum();
 			//moveBoss();
-			
+		
+		// evolve bullets
+		moveBullets();
+		
+
+		
 	}
 
 	
@@ -166,13 +177,59 @@ public class PacmanGame implements Game {
 	
 	private void moveMonsters(int speed) {
 		long currTime= System.currentTimeMillis();
-		if(currTime-gameTime>speed) {
+		if((currTime-gameTime>500)& (!this.monsters.isEmpty())) {
 			for(int i = 0; i<monsters.size();i++) {
 				monsters.get(i).move(this.getHero());
 			}
-		this.gameTime= System.currentTimeMillis();
+			this.gameTime= System.currentTimeMillis();
 		}
 	}
+	
+	private void moveBullets() {
+		if(!this.bullets.isEmpty()) {
+			for(int i = 0; i<bullets.size();i++) {
+				bullets.get(i).evolve(laby);
+				if (!bullets.get(i).isBullet_alive()) {
+					this.bullets.remove(i);
+				}
+			}
+		}
+	}
+	
+	private void generateBullet() {
+		Bullet newBullet = new Bullet(hero,laby);
+		if (newBullet.isBullet_alive()) {
+			if (this.bullets.isEmpty()) {
+				this.bullets.add(newBullet);
+			}else {
+				//avoid shooting more than one bullet at a time
+				int lastIndex=this.bullets.size()-1;
+				long lastTrigger= this.bullets.get(lastIndex).getTrigger_time();
+				if (newBullet.getTrigger_time()-lastTrigger>200) {
+					this.bullets.add(newBullet);
+				}
+			}
+		}
+	}
+	
+	private void bulletKillMonster() {
+		if((!this.bullets.isEmpty())&(!this.monsters.isEmpty())){
+			for (int i=0; i< bullets.size();i++) {
+				for (int j=0;j<monsters.size();j++) {
+					if ((bullets.get(i).getxPos()==monsters.get(j).getxPos())&(bullets.get(i).getyPos()==monsters.get(j).getyPos())) {
+						this.bullets.remove(i);
+						this.monsters.remove(j);
+						if((!this.bullets.isEmpty())||(!this.monsters.isEmpty())) {
+							break;
+						}
+					}
+				}
+				break;
+			}
+		}
+	}
+	
+	//getters and setters
 
 	public Hero getHero() {
 		return hero;
@@ -187,10 +244,9 @@ public class PacmanGame implements Game {
 	}
 
 
-	
-	public void evolve(Cmd userCmd) {
-		// TODO Auto-generated method stub
 		
+	public ArrayList<Bullet> getBullets() {
+		return bullets;
 	}
 	
 	

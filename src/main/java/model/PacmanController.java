@@ -43,22 +43,26 @@ public class PacmanController implements GameController {
 	public void keyPressed(KeyEvent e) {
 		
 		
-		switch (Character.toUpperCase(e.getKeyChar())) {
+		switch (e.getKeyCode()) {
 		//command to move up
-		case 'Z':
+		case KeyEvent.VK_W:
 			this.commandeEnCours = Cmd.UP;
 			break;
 		//command to move down
-		case 'S':
+		case KeyEvent.VK_S:
 			this.commandeEnCours = Cmd.DOWN;
 			break;
 		//command to move left
-		case 'Q':
+		case KeyEvent.VK_A:
 			this.commandeEnCours = Cmd.LEFT;
 			break;
 		//command to move right
-		case 'D':
+		case KeyEvent.VK_D:
 			this.commandeEnCours = Cmd.RIGHT;
+			break;
+		//command to shoot
+		case KeyEvent.VK_SPACE:
+			this.commandeEnCours = Cmd.SHOOT;
 			break;
 		}
 

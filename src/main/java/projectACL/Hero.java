@@ -1,10 +1,13 @@
 
 package projectACL;
 
+import engine.Cmd;
+
 public class Hero extends GameCharacter {
 
 	//constructors
-			public Hero () {
+		private Cmd last_move = Cmd.RIGHT;
+		public Hero () {
 				super();
 			}
 			
@@ -22,8 +25,10 @@ public class Hero extends GameCharacter {
 			newYPos--;
 			
 			//checks if the new position is valid before updating
-			if (Labyrinth.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos)) {
 				this.setyPos(newYPos);
+				this.last_move=Cmd.UP;
+			}
 			else System.out.println(" Hero can't move up ");
 			
 		}
@@ -32,8 +37,10 @@ public class Hero extends GameCharacter {
 			int newYPos= this.getyPos();
 			int newXPos= this.getxPos();
 			newYPos++;
-			if (Labyrinth.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos)) {
 				this.setyPos(newYPos);
+				this.last_move=Cmd.DOWN;
+			}
 			else System.out.println(" Hero can't move down ");
 				
 		}
@@ -42,8 +49,10 @@ public class Hero extends GameCharacter {
 			int newXPos= this.getxPos();
 			int newYPos= this.getyPos();
 			newXPos++;
-			if (Labyrinth.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos)) {
 				this.setxPos(newXPos);
+				this.last_move=Cmd.RIGHT;
+			}
 			else System.out.println(" Hero can't move right ");
 			
 		}
@@ -52,8 +61,10 @@ public class Hero extends GameCharacter {
 			int newXPos= this.getxPos();
 			int newYPos= this.getyPos();
 			newXPos--;
-			if (Labyrinth.validatePos(newXPos, newYPos))
+			if (Labyrinth.validatePos(newXPos, newYPos)) {
 				this.setxPos(newXPos);
+				this.last_move=Cmd.LEFT;
+			}
 			else System.out.println(" Hero can't move left ");
 			
 		}
@@ -63,7 +74,6 @@ public class Hero extends GameCharacter {
 		public String toString() {
 	        return "Hero Position: ( " + this.getxPos() + " , " + this.getyPos() + " )";
 	    }
-		
 
 		public void strike(GameCharacter character) {
 			
@@ -82,7 +92,13 @@ public class Hero extends GameCharacter {
 		public void move(Hero hero) {
 		
 		}
-		
+		public Cmd getLast_move() {
+			return last_move;
+		}
+
+		public void setLast_move(Cmd last_move) {
+			this.last_move = last_move;
+		}		
 		
 		
 		

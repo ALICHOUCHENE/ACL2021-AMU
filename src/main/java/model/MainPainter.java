@@ -14,10 +14,12 @@ import java.util.ArrayList;
 
 import Painters.PacmanPainter;
 import Painters.MonsterPainter;
+import Painters.BulletPainter;
 import Painters.LabyrinthPainter;
 import Painters.ScorePainter;
 
 import engine.GamePainter;
+import projectACL.Bullet;
 import projectACL.Hero;
 import projectACL.Labyrinth;
 import projectACL.Monster;
@@ -27,12 +29,14 @@ public class MainPainter implements GamePainter{
 	
 	Hero pacman;
 	ArrayList<Monster> monsters;
+	ArrayList<Bullet> bullets;
 	Tile[][] tiles;
 
 	public MainPainter(PacmanGame game) {
 		this.pacman=game.getHero();
 		this.monsters=game.getMonstres();
 		this.tiles=Labyrinth.getBuild();
+		this.bullets= game.getBullets();
 	}
 
 	
@@ -41,6 +45,7 @@ public class MainPainter implements GamePainter{
 		LabyrinthPainter.colorLabyrinth(im, tiles);
 		PacmanPainter.draw(im, pacman);
 		MonsterPainter.draw(im,monsters);
+		BulletPainter.draw(im,bullets);
 	}
 	
 	
