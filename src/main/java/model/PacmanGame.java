@@ -67,7 +67,7 @@ public class PacmanGame implements Game {
 	 */
 
 	public void evolve(Cmd commande) {
-
+		System.out.println(commande);
 		switch (commande) {
 		
 		case RIGHT:
@@ -93,11 +93,18 @@ public class PacmanGame implements Game {
 		case IDLE:
 			break;
 		}
+		
+		//bullets kill monsters
+		bulletKillMonster();
+		
 		// evolve monsters
 		moveMonsters();
 		
 		// evolve bullets
 		moveBullets();
+		
+
+		
 	}
 
 	/**
@@ -172,7 +179,33 @@ public class PacmanGame implements Game {
 	private void generateBullet() {
 		Bullet newBullet = new Bullet(hero,laby);
 		if (newBullet.isBullet_alive()) {
-			this.bullets.add(newBullet);
+			if (this.bullets.isEmpty()) {
+				this.bullets.add(newBullet);
+			}else {
+				//avoid shooting more than one bullet at a time
+				int lastIndex=this.bullets.size()-1;
+				long lastTrigger= this.bullets.get(lastIndex).getTrigger_time();
+				if (newBullet.getTrigger_time()-lastTrigger>200) {
+					this.bullets.add(newBullet);
+				}
+			}
+		}
+	}
+	
+	private void bulletKillMonster() {
+		if((!this.bullets.isEmpty())&(!this.monsters.isEmpty())){
+			for (int i=0; i< bullets.size();i++) {
+				for (int j=0;j<monsters.size();j++) {
+					if ((bullets.get(i).getxPos()==monsters.get(j).getxPos())&(bullets.get(i).getyPos()==monsters.get(j).getyPos())) {
+						this.bullets.remove(i);
+						this.monsters.remove(j);
+						if((!this.bullets.isEmpty())||(!this.monsters.isEmpty())) {
+							break;
+						}
+					}
+				}
+				break;
+			}
 		}
 	}
 	

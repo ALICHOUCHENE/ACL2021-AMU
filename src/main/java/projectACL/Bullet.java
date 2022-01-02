@@ -80,6 +80,16 @@ public class Bullet {
 	public void setBullet_alive(boolean bullet_alive) {
 		this.bullet_alive = bullet_alive;
 	}
+
+
+	public long getTrigger_time() {
+		return trigger_time;
+	}
+
+
+	public void setTrigger_time(long trigger_time) {
+		this.trigger_time = trigger_time;
+	}
 	
 	
 

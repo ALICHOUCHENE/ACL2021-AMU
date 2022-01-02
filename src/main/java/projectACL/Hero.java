@@ -6,7 +6,7 @@ import engine.Cmd;
 public class Hero extends GameCharacter {
 
 	//constructors
-		private Cmd last_move = Cmd.IDLE;
+		private Cmd last_move = Cmd.RIGHT;
 		public Hero () {
 				super();
 			}
