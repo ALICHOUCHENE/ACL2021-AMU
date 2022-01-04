@@ -1,6 +1,9 @@
 package start;
 
 import model.MainPainter;
+
+import java.io.IOException;
+
 import engine.GameEngineGraphical;
 import model.PacmanController;
 import model.PacmanGame;
@@ -13,7 +16,7 @@ import projectACL.Hero;
  */
 public class Main {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 
 		Hero pacman = new Hero();
 

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import engine.Cmd;
 import engine.Game;
 import projectACL.Monster;
+import projectACL.MonsterSmart;
 import projectACL.Tile;
 import projectACL.Hero;
 import projectACL.Labyrinth;
@@ -38,8 +39,10 @@ public class PacmanGame implements Game {
 	private Hero hero= new Hero();
 	
 
+	private boolean isLastLevel;
 	
 	private Labyrinth laby;
+	public ArrayList<MonsterSmart> ghosts;
 	public ArrayList<Monster> monsters;
 	private long gameTime;
 
@@ -62,6 +65,7 @@ public class PacmanGame implements Game {
 		this.laby=new Labyrinth(1);
 		this.hero= this.generateHero();
 		this.monsters=this.generateMonsters();
+		this.ghosts=this.generateGhosts();
 		
 		this.gameTime=System.currentTimeMillis();
 	}
@@ -104,20 +108,19 @@ public class PacmanGame implements Game {
 	/**
 	 * verifier si le jeu est fini
 	 */
+	public boolean nextlevel() {
+		boolean position;
+		position=(Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());
+		return(position);
+	}
 	
-	@Override
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
-		//TODO increment level ++ , must make level an attribute in Labyrinth
-		//TODO add case level : , in Labyrinth , to decide the text file and the design for each level 
-		boolean state=(Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());
-		
-		return(state); 
+
+		return(laby.Level_1_Finished() & laby.Level_2_Finished());
 		
 		//finish line is (Dimx, Dimy)
 		//check GameEngineGraphical if i want to make display changes
-	
-		
 	}
 	
 	
@@ -154,6 +157,16 @@ public class PacmanGame implements Game {
 		}
 		return(monsters);
 	}
+	private ArrayList<MonsterSmart> generateGhosts(){
+		ArrayList<int[]> monster2Spawn = laby.getMonster2Spawn();
+		ArrayList<MonsterSmart> ghosts= new ArrayList<MonsterSmart>();
+		int[] pos;
+		for (int i=0;i<monster2Spawn.size();i++) {
+			pos=monster2Spawn.get(i);
+			ghosts.add(new MonsterSmart(pos[0],pos[1]));
+		}
+		return(ghosts);
+	}
 	
 	private void moveMonsters() {
 		long currTime= System.currentTimeMillis();
@@ -175,6 +188,9 @@ public class PacmanGame implements Game {
 
 	public ArrayList<Monster> getMonstres() {
 		return monsters;
+	}
+	public ArrayList<MonsterSmart> getGhosts() {
+		return ghosts;
 	}
 	
 	

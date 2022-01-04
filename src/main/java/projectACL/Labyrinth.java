@@ -1,5 +1,6 @@
 package projectACL;
 
+
 import java.io.BufferedReader;
 
 import java.io.FileNotFoundException;
@@ -7,36 +8,63 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import engine.Game;
+
 //class Labyrinth: a maze with 2 dimensions dimx an dimy
 public class Labyrinth {
 		
 		private final static int dimx=12;
 		private final static int dimy=12;
+		
+		private Game game;
+		private Hero hero= new Hero();
+		
+		protected int level;
 
 		
 		private static Tile[][] build= new Tile[dimx][dimy];
 				
 		private int [] heroSpawn;
 		private ArrayList<int[]> monsterSpawn=new ArrayList<int[]>();
-		
+		private ArrayList<int[]> monster2Spawn=new ArrayList<int[]>();
 	
 		// Constructor
 
 		public  Labyrinth(int level) {			
 			BufferedReader LabReader;
+			level=1;
+			
 			// add case level :each level has a different design 
+			
 			try {
 				String source = "src/main/java/levels/level_"+level+".txt";
 				LabReader = new BufferedReader(new FileReader(source));
 				this.setCases(LabReader);
 				LabReader.close();
-			} catch (IOException e) {
+				if(Level_1_Finished()==true) {
+					level++;
+					
+					String source1 = "src/main/java/levels/level_"+level+".txt";
+					LabReader = new BufferedReader(new FileReader(source1));
+					this.setCases(LabReader);
+					LabReader.close();
+				}
+		} catch (IOException e) {
 				// TODO Auto-generated catch block
 				try {
 					String source = "main/java/levels/level_"+level+".txt";
 					LabReader = new BufferedReader(new FileReader(source));
 					this.setCases(LabReader);
 					LabReader.close();
+					if(Level_1_Finished()==true) {
+						level++;
+						System.out.println("Level 1 is finished");
+						String source1 = "src/main/java/levels/level_"+level+".txt";
+						LabReader = new BufferedReader(new FileReader(source1));
+						this.setCases(LabReader);
+						LabReader.close();
+					}	
+					
 				}catch(IOException ex) {
 					ex.printStackTrace();
 				}
@@ -86,7 +114,10 @@ public class Labyrinth {
 							build[i][j]=new Floor();
 							this.monsterSpawn.add(new int[] {j,i});
 							break;
-							
+						case 5:
+							build[i][j]=new Floor();
+							this.monster2Spawn.add(new int[] {j,i});
+							break;
 					
 						default:
 							break;
@@ -99,6 +130,19 @@ public class Labyrinth {
 			}
 		}
 		
+		public boolean Level_1_Finished() {
+			boolean state;
+			state=(Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());
+			System.out.println(Labyrinth.getDimX()-1);
+			System.out.println(hero.getxPos());
+			return(state);
+			
+		}
+		public boolean Level_2_Finished() {
+			boolean position;
+			position=(Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());
+			return(position);
+		}
 		
 		//getters
 		public static int getDimX() {
@@ -118,6 +162,17 @@ public class Labyrinth {
 
 		public ArrayList<int[]> getMonsterSpawn() {
 			return monsterSpawn;
+		}
+		public ArrayList<int[]> getMonster2Spawn() {
+			return monster2Spawn;
+		}
+
+		public Game getGame() {
+			return game;
+		}
+
+		public void setGame(Game game) {
+			this.game = game;
 		}
 		
 	

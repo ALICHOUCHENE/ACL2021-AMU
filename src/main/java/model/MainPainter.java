@@ -22,6 +22,7 @@ import engine.GamePainter;
 import projectACL.Hero;
 import projectACL.Labyrinth;
 import projectACL.Monster;
+import projectACL.MonsterSmart;
 import projectACL.Score;
 import projectACL.Tile;
 
@@ -29,12 +30,14 @@ public class MainPainter implements GamePainter{
 	
 	Hero pacman;
 	ArrayList<Monster> monsters;
+	ArrayList<MonsterSmart> ghosts;
 	Tile[][] tiles;
 	
 
 	public MainPainter(PacmanGame game) {
 		this.pacman=game.getHero();
 		this.monsters=game.getMonstres();
+		this.ghosts=game.getGhosts();
 		this.tiles=Labyrinth.getBuild();
 	}
 
@@ -44,7 +47,7 @@ public class MainPainter implements GamePainter{
 		LabyrinthPainter.colorLabyrinth(im, tiles);
 		PacmanPainter.draw(im, pacman);
 		MonsterPainter.draw(im,monsters);
-		
+
 	}
 	
 	
