@@ -39,7 +39,7 @@ public class PacmanGame implements Game {
 	private Hero hero= new Hero();
 	
 
-	private boolean isLastLevel;
+	
 	
 	private Labyrinth laby;
 	public ArrayList<MonsterSmart> ghosts;
@@ -68,6 +68,10 @@ public class PacmanGame implements Game {
 		this.ghosts=this.generateGhosts();
 		
 		this.gameTime=System.currentTimeMillis();
+		if (laby.levelisFinished(1)) {
+			this.laby=new Labyrinth(2);
+			}
+		
 	}
 
 	/**
@@ -116,12 +120,11 @@ public class PacmanGame implements Game {
 	
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
-
-		return(laby.Level_1_Finished() & laby.Level_2_Finished());
-		
-		//finish line is (Dimx, Dimy)
-		//check GameEngineGraphical if i want to make display changes
+		boolean state=false;// (Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());  //TO DOOO , i just kept it like this to test
+		return(state);
 	}
+	
+
 	
 	
 	public boolean isGameOver() {

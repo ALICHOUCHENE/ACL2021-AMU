@@ -32,39 +32,18 @@ public class Labyrinth {
 
 		public  Labyrinth(int level) {			
 			BufferedReader LabReader;
-			level=1;
-			
-			// add case level :each level has a different design 
-			
 			try {
 				String source = "src/main/java/levels/level_"+level+".txt";
 				LabReader = new BufferedReader(new FileReader(source));
 				this.setCases(LabReader);
 				LabReader.close();
-				if(Level_1_Finished()==true) {
-					level++;
-					
-					String source1 = "src/main/java/levels/level_"+level+".txt";
-					LabReader = new BufferedReader(new FileReader(source1));
-					this.setCases(LabReader);
-					LabReader.close();
-				}
-		} catch (IOException e) {
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				try {
 					String source = "main/java/levels/level_"+level+".txt";
 					LabReader = new BufferedReader(new FileReader(source));
 					this.setCases(LabReader);
 					LabReader.close();
-					if(Level_1_Finished()==true) {
-						level++;
-						System.out.println("Level 1 is finished");
-						String source1 = "src/main/java/levels/level_"+level+".txt";
-						LabReader = new BufferedReader(new FileReader(source1));
-						this.setCases(LabReader);
-						LabReader.close();
-					}	
-					
 				}catch(IOException ex) {
 					ex.printStackTrace();
 				}
@@ -175,5 +154,16 @@ public class Labyrinth {
 			this.game = game;
 		}
 		
+		public void setlevel(int level) {
+			this.level=level;
+		}
+		public int getlevel() {
+			return level;
+		}
+		public boolean levelisFinished(int level) {
+		
+			return (Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());   // this is not working, getxpos is null
+			
+		}
 	
 }
