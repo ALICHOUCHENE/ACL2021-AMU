@@ -75,7 +75,7 @@ public class Fantum extends Monster{
 		else 
 			super.move(hero);
 		
-		if(newxPos<=11 & newxPos>=0 & newyPos<=11 & newyPos>=0) {
+		if(newxPos<=Labyrinth.getDimX()-1 & newxPos>=0 & newyPos<=Labyrinth.getDimY()-1 & newyPos>=0) {
 			
 		this.setxPos( newxPos);
 		this.setyPos( newyPos);

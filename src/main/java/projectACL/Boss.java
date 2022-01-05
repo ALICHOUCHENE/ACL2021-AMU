@@ -1,8 +1,5 @@
 package projectACL;
-
-
-
-		
+	
 
 public class Boss extends Monster{
 	
@@ -23,20 +20,6 @@ public class Boss extends Monster{
 	
 public void move(Hero hero) {
 		
-		int [][]map= {
-		     {0,0,0,0,0,0,0,0,0,0,0,0},
-		     {3,1,1,1,1,0,1,1,1,1,1,0},
-		     {0,1,0,0,0,0,4,0,0,0,1,0},
-		     {0,1,1,1,1,0,1,0,1,0,1,0},
-		     {0,1,0,1,1,0,1,0,1,1,4,0},
-		     {0,0,0,1,4,1,1,0,1,1,1,0},
-		     {0,1,1,1,1,1,1,1,1,0,0,0},
-		     {0,1,0,0,1,0,1,1,1,1,1,0},
-		     {0,1,1,0,1,0,0,0,1,1,1,0},
-		     {0,0,0,0,1,1,1,0,0,0,1,0},
-		     {0,1,1,1,1,1,1,0,1,0,1,2},
-		     {0,0,0,0,0,0,0,0,0,0,0,0}
-	};
 		
 		
 		int xhero=hero.getxPos();
@@ -46,19 +29,20 @@ public void move(Hero hero) {
 		int newxPos=0;
 		int newyPos=0;
 		
-
+		
 		// move up left
 		
 		if (xhero<=xmonster & yhero<=ymonster) {
 		
-		if( map[ymonster][xmonster - 1] == 1 || map[ymonster][xmonster - 1]==3 ) {
+		if( Labyrinth.validatePos(xmonster-1, ymonster) ) {
+			
 				xmonster--;	
 				newxPos=xmonster;
 				newyPos=ymonster;
 				
 					
 			}
-		 if( map[ymonster - 1][xmonster] == 1 ) {
+		 if( Labyrinth.validatePos(xmonster, ymonster-1) ) {
 			
 				ymonster--;	
 				newxPos=xmonster;
@@ -76,14 +60,16 @@ public void move(Hero hero) {
 		
 		if (xhero>=xmonster & yhero <= ymonster) {
 					
-					if( map[ymonster][xmonster+1] == 1 || map[ymonster][xmonster+1] == 3) {
+					if( Labyrinth.validatePos(xmonster+1, ymonster)) {
+						
 							xmonster++;	
 							newxPos=xmonster;
 							newyPos=ymonster;
 								
 						}
 					
-					if( map[ymonster][xmonster-1] == 1 ) {
+					if( Labyrinth.validatePos(xmonster-1, ymonster) ) {
+						
 						xmonster--;	
 						newxPos=xmonster;
 						newyPos=ymonster;
@@ -91,7 +77,7 @@ public void move(Hero hero) {
 					
 					
 					
-					 if( map[ymonster-1][xmonster] == 1) {
+					 if(Labyrinth.validatePos(xmonster, ymonster-1)) {
 						
 							ymonster--;	
 							newxPos=xmonster;
@@ -104,19 +90,18 @@ public void move(Hero hero) {
 					 
 					}
 		
-		
 		// move down left
-		
 		
 		if (xhero<=xmonster & yhero>=ymonster) {
 			
-			if( map[ymonster][xmonster-1] == 1 || map[ymonster][xmonster-1] == 3) {
+			if( Labyrinth.validatePos(xmonster-1, ymonster)) {
+				
 					xmonster--;	
 					newxPos=xmonster;
 					newyPos=ymonster;
 						
 				}
-			 if( map[ymonster + 1][xmonster] == 1 || map[ymonster + 1][xmonster] == 3) {
+			 if( Labyrinth.validatePos(xmonster, ymonster+1)) {
 				
 					ymonster++;	
 					newxPos=xmonster;
@@ -133,13 +118,14 @@ public void move(Hero hero) {
 		
 		if (xhero>=xmonster & yhero>=ymonster) {
 			
-			if( map[ymonster][xmonster + 1] == 1 || map[ymonster][xmonster + 1] == 3) {
+			if( Labyrinth.validatePos(xmonster+1, ymonster)) {
+				
 					xmonster++;	
 					newxPos=xmonster;
 					newyPos=ymonster;
 						
 				}
-			 if( map[ymonster + 1][xmonster] == 1 || map[ymonster + 1][xmonster] == 3) {
+			 if( Labyrinth.validatePos(xmonster, ymonster+1)) {
 				
 					ymonster++;	
 					newxPos=xmonster;
@@ -151,38 +137,19 @@ public void move(Hero hero) {
 				 super.move(hero);
 			 
 			}
+		
+		
+		
 		if (Labyrinth.validatePos(newxPos,newyPos)) {
-
-		this.setxPos( newxPos);
-		this.setyPos( newyPos);
-		}
-	
-
-	
-	}	
-	
-	
-	
-	
-	
-	
-	public void strike(GameCharacter character) {
-		int damage;
-		
 			
+			this.setxPos( newxPos);
+			this.setyPos( newyPos);
 		}
 		
+		
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}
+
 
 
 
@@ -205,3 +172,4 @@ public void move(Hero hero) {
 	
 	
 }
+

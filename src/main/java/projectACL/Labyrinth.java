@@ -79,7 +79,7 @@ public class Labyrinth {
 							build[i][j]=new Floor();
 							this.heroSpawn= new int []{j,i};
 							break;
-						
+						 
 						case 4:
 							build[i][j]=new Floor();
 							this.monsterSpawn.add(new int[] {j,i});
@@ -96,7 +96,7 @@ public class Labyrinth {
 			}
 		}
 		
-		
+		 
 		//getters
 		public static int getDimX() {
 			return Labyrinth.dimx;

@@ -61,7 +61,7 @@ public class GameEngineGraphical {
 			Cmd c = this.gameController.getCommand();
 			
 			// fait evoluer le game
-			this.game.evolve(c,3);
+			this.game.evolve(c);
 			
 			// affiche le game
 			this.gui.paint();

@@ -41,8 +41,8 @@ public class PacmanGame implements Game {
 	private ArrayList<Monster> monsters;
 	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	private long gameTime;
-	private int [] levelTable= {500,400,300,200,100};
 
+	
 	
 	public PacmanGame(String source) {
 
@@ -71,7 +71,7 @@ public class PacmanGame implements Game {
 	 * @param commande
 	 */
 
-	public void evolve(Cmd commande, int level) {
+	public void evolve(Cmd commande) {
 		//System.out.println("Execute "+commande);
 
 		switch (commande) {
@@ -82,7 +82,7 @@ public class PacmanGame implements Game {
 			
 		case LEFT:
 			hero.moveLeft();
-		break;
+		break; 
 		
 		case UP:
 			hero.moveUp();
@@ -100,20 +100,9 @@ public class PacmanGame implements Game {
 			break;
 		}
 		
-		//bullets kill monsters
-		bulletKillMonster();
+		// evolve monsters
 		
-		if( level>=1 & level<=5) 
-		moveMonsters(levelTable[level-1]);
-		
-		if (level==6)
-			moveMonsters(levelTable[levelTable.length-1]);
-			//moveFantum();
-		
-		if(level==7)
-			moveMonsters(levelTable[levelTable.length-1]);
-			//moveFantum();
-			//moveBoss();
+		moveMonsters();
 		
 		// evolve bullets
 		moveBullets();
@@ -170,12 +159,12 @@ public class PacmanGame implements Game {
 		int[] pos;
 		for (int i=0;i<monsterSpawn.size();i++) {
 			pos=monsterSpawn.get(i);
-			monsters.add(new Boss(pos[0],pos[1]));
+			monsters.add(new MonsterIntelligent(pos[0],pos[1]));
 		}
 		return(monsters);
 	}
 	
-	private void moveMonsters(int speed) {
+	private void moveMonsters() {
 		long currTime= System.currentTimeMillis();
 		if((currTime-gameTime>500)& (!this.monsters.isEmpty())) {
 			for(int i = 0; i<monsters.size();i++) {
