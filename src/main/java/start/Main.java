@@ -1,6 +1,7 @@
 package start;
 
 import model.MainPainter;
+import Painters.HomeScreenPainter;
 import engine.GameEngineGraphical;
 import model.PacmanController;
 import model.PacmanGame;
@@ -14,11 +15,14 @@ import projectACL.Hero;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-
+		int s=0;
+		HomeScreenPainter.HomeScreenPaint();
+		while (s==0) {
+			System.out.println("Game hasn't started yet ! ");
+		if (HomeScreenPainter.gameStarted==true){
+			s=1;
+			System.out.println("Game has started ! ");
 		Hero pacman = new Hero();
-
-
-		
 		// creation du jeu particulier et de son afficheur
 		PacmanGame game = new PacmanGame("helpFilePacman.txt");
 		MainPainter painter = new MainPainter(game);
@@ -28,13 +32,11 @@ public class Main {
 		// classe qui lance le moteur de jeu generique
 		
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
+
 		engine.run();
 
 	
 		
-		System.out.println("Dead");
-	
-
-	}
+		System.out.println("Dead");}}}
 
 }
