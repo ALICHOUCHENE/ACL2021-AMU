@@ -248,6 +248,10 @@ public class PacmanGame implements Game {
 		return bullets;
 
 	}
+
+	public void setHero(Hero hero) {
+		this.hero = hero;
+	}
 	
 	
 
