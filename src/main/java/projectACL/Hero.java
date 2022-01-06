@@ -44,7 +44,7 @@ public class Hero extends GameCharacter {
 			else System.out.println(" Hero can't move down ");
 				
 		}
-		
+		 
 		public void moveRight() {
 			int newXPos= this.getxPos();
 			int newYPos= this.getyPos();
@@ -82,7 +82,7 @@ public class Hero extends GameCharacter {
 		public void teleporte( int x , int y) {
 			int newXPos= x;
 			int newYPos= y;
-			if (Labyrinth.validatePos(newXPos, newYPos)) {
+			if (Labyrinth.validatePos(newXPos, newYPos)) { 
 				this.setxPos(newXPos);
 				this.setyPos(newYPos);
 				

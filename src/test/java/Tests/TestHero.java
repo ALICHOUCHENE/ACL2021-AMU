@@ -12,7 +12,6 @@ import projectACL.Labyrinth;
 
 
 
-
 class TestHero {
 
 	@BeforeAll
@@ -46,11 +45,18 @@ class TestHero {
 	@Test
 	public void testMoveUp() {
 		Hero instance;
-		instance=new Hero(0,1);
+		instance=new Hero(1,2);
 		instance.moveUp();
 		assertEquals(instance.getyPos(),0);
 		
-		
+	}
+	
+	@Test
+	public void testMoveDown() {
+		Hero instance;
+		instance=new Hero(6,6);
+		instance.moveDown();
+		assertEquals(instance.getyPos(),7);
 	}
 	
 	@Test
@@ -61,7 +67,27 @@ class TestHero {
 		assertEquals(instance.getxPos(),1);
 		
 	}
+	
+	@Test
+	public void testMoveLeft() {
+		Hero instance;
+		instance=new Hero(6,6);
+		instance.moveLeft();
+		assertEquals(instance.getxPos(),5);
+		
+	}
+	
+	@Test
+	public void testTeleporte() {
+		Hero instance;
+		instance=new Hero(0,1);
+		instance.teleporte(6, 6);
+		assertEquals(instance.getxPos(),6);
+		assertEquals(instance.getyPos(),6);
 
-
+		
+	}
+	
+ 
 
 }
