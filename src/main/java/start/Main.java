@@ -15,14 +15,12 @@ import projectACL.Hero;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-		int s=0;
+
 		HomeScreenPainter.HomeScreenPaint();
-		while (s==0) {
-			System.out.println("Game hasn't started yet ! ");
-		if (HomeScreenPainter.gameStarted==true){
-			s=1;
-			System.out.println("Game has started ! ");
-		Hero pacman = new Hero();
+		while (HomeScreenPainter.isGameStarted()==false) {
+			System.out.println("Game hasn't started yet");
+		}
+
 		// creation du jeu particulier et de son afficheur
 		PacmanGame game = new PacmanGame("helpFilePacman.txt");
 		MainPainter painter = new MainPainter(game);
@@ -37,6 +35,7 @@ public class Main {
 
 	
 		
-		System.out.println("Dead");}}}
+		System.out.println("Dead");
+		}
 
 }

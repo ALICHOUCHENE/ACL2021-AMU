@@ -15,9 +15,9 @@ import javax.swing.border.Border;
 
 public class HomeScreenPainter {
     public static HomeScreenPanel homescreen;
-    public static boolean gameStarted = false;
+    private static boolean gameStarted = false;
     
-    public static void HelpWindow() {                   // Méthode qui permet d'afficher la fenêtre HELP
+    public static void HelpWindow() {                   // Mï¿½thode qui permet d'afficher la fenï¿½tre HELP
 
        
     }
@@ -62,5 +62,14 @@ public class HomeScreenPainter {
              fenetre.setVisible(true);
         
     }
+    
+    //setters and getters
+    public static boolean isGameStarted() {
+		return gameStarted;
+	}
+
+	public static void setGameStarted(boolean gameStarted) {
+		HomeScreenPainter.gameStarted = gameStarted;
+	}
 
 }
