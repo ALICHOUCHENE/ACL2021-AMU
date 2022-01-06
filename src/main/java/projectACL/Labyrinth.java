@@ -1,10 +1,14 @@
 package projectACL;
 
+
 import java.io.BufferedReader;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import engine.Game;
 
 //class Labyrinth: a maze with 2 dimensions dimx an dimy
 public class Labyrinth {
@@ -12,12 +16,12 @@ public class Labyrinth {
 		private final static int dimx=12;
 		private final static int dimy=12;
 
-
 		private static Tile[][] build= new Tile[dimx][dimy];
 				
 		private int [] heroSpawn;
+		private int [] finishLine;
 		private ArrayList<int[]> monsterSpawn=new ArrayList<int[]>();
-		
+		private ArrayList<int[]> monster2Spawn=new ArrayList<int[]>();
 	
 		// Constructor
 
@@ -73,6 +77,7 @@ public class Labyrinth {
 						
 						case 2:
 							build[i][j]=new Door();
+							this.finishLine= new int [] {j,i};
 							break;
 							
 						case 3:
@@ -82,9 +87,13 @@ public class Labyrinth {
 						 
 						case 4:
 							build[i][j]=new Floor();
-							this.monsterSpawn.add(new int[] {j,i});
+							this.monsterSpawn.add(new int[] {j,i,1});
 							break;
-							
+						case 5:
+							build[i][j]=new Floor();
+							this.monsterSpawn.add(new int[] {j,i,2});
+							break;
+					
 						default:
 							break;
 						}			
@@ -96,8 +105,9 @@ public class Labyrinth {
 			}
 		}
 		
-		 
-		//getters
+
+		//getters and setters
+
 		public static int getDimX() {
 			return Labyrinth.dimx;
 		}
@@ -116,6 +126,23 @@ public class Labyrinth {
 		public ArrayList<int[]> getMonsterSpawn() {
 			return monsterSpawn;
 		}
+		public ArrayList<int[]> getMonster2Spawn() {
+			return monster2Spawn;
+		}
+
+		public int[] getFinishLine() {
+			return finishLine;
+		}
+
+		public void setFinishLine(int[] finishLine) {
+			this.finishLine = finishLine;
+		}
 		
+
+		/*public boolean levelisFinished(int level) {
+		
+			return (Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());   // this is not working, getxpos is null
+			
+		}*/
 	
 }

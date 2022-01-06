@@ -5,6 +5,8 @@ abstract class GameCharacter {
 	private int xPos;
 	private int yPos;
 	
+	private String ImageSource;
+	
 	//constructors
 	public GameCharacter () {
 		this.xPos=0;
@@ -29,11 +31,21 @@ abstract class GameCharacter {
 	}
 
 
-abstract public void move(Hero hero);
-abstract public void strike(GameCharacter character);
-abstract public void teleporte( int x , int y);
+
+	abstract public void move(Hero hero);
+	abstract public void strike(GameCharacter character);
+	abstract public void teleporte( int x , int y);
 
 
+
+	
+	public void setImageSource(String ImageSource) {
+		this.ImageSource = ImageSource;
+	}
+	
+	public String getImageSource() {
+		return ImageSource;
+	}
 
 
 

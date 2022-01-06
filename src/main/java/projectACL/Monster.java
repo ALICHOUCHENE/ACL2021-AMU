@@ -3,25 +3,41 @@ import java.util.Random;
 public class Monster extends GameCharacter {
 	
 	static int strength;
+
 	
+	String[] frames = { "./images/monster/monster.png", "./images/monster/monster1.png", "./images/monster/monster2.png"};
 	
 	//constructors
-	
 	public Monster () {
 		super();
+		this.setImageSource(frames[0]);
 	}
 	
 	public Monster(int xPos, int yPos) {
 		
 		super(xPos,yPos);
-}
+		this.setImageSource(frames[0]);
+	}
 
+	
+	// animating the moving of the monster
+	public String getframe() {
+		if (getImageSource()==(frames[0])) {
+			
+			return(frames[1]);
+		}
+		else if (getImageSource()==(frames[1])) {
+			return(frames[2]);
+		}
+		else return(frames[0]);
+	}
+	
 	public void move(Hero hero) {
-		
 		int newXPos= this.getxPos();
 		int newYPos= this.getyPos();
 		float randomStep;
 		Random rand=new Random();
+		
 		
 		// get the next step
 		
@@ -40,6 +56,7 @@ public class Monster extends GameCharacter {
 		if (Labyrinth.validatePos(newXPos,newYPos)) {
 			this.setxPos((int) newXPos);
 			this.setyPos((int)newYPos);
+			this.setImageSource(getframe()); // animating the moving of the monster
 		}
 	}
 	

@@ -1,6 +1,8 @@
 package model;
 
 import java.util.Random;
+
+
 import java.io.BufferedReader;
 
 import java.io.BufferedReader; 
@@ -11,7 +13,6 @@ import java.util.ArrayList;
 
 import engine.Cmd;
 import engine.Game;
-import projectACL.Monster;
 import projectACL.Bullet;
 import projectACL.Hero;
 import projectACL.Labyrinth;
@@ -19,6 +20,9 @@ import projectACL.Monster;
 import projectACL.MonsterIntelligent;
 import projectACL.Fantum;
 import projectACL.Boss;
+import projectACL.MonsterSmart;
+import projectACL.Tile;
+import projectACL.Door;
 
 
 /**
@@ -41,10 +45,10 @@ public class PacmanGame implements Game {
 	private ArrayList<Monster> monsters;
 	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	private long gameTime;
+	
 
 	
-	
-	public PacmanGame(String source) {
+	public PacmanGame(String source, int level) {
 
 		BufferedReader helpReader;
 		try {
@@ -58,11 +62,8 @@ public class PacmanGame implements Game {
 			System.out.println("Help not available");
 		}
 
-		
-		this.laby=new Labyrinth(1);
-		this.hero= this.generateHero();
-		this.monsters=this.generateMonsters();
-		this.gameTime=System.currentTimeMillis();
+		this.generateGame(level);
+
 	}
 
 	/**
@@ -100,15 +101,15 @@ public class PacmanGame implements Game {
 			break;
 		}
 		
+		bulletKillMonster();
+		
 		// evolve monsters
 		
 		moveMonsters();
 		
 		// evolve bullets
 		moveBullets();
-		
 
-		
 	}
 
 	
@@ -119,31 +120,35 @@ public class PacmanGame implements Game {
 	/**
 	 * verifier si le jeu est fini
 	 */
-	
-	@Override
-	public boolean isFinished() {
-		// le jeu n'est jamais fini
-		return((Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos())); 
-		//finish line is (Dimx, Dimy)
-		//check GameEngineGraphical if i want to make display changes
-	
-		
+	public boolean nextlevel() {
+		boolean position;
+		position=(Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());
+		return(position);
 	}
 	
+	public boolean isFinished() {
+		boolean state=false;
+		state=(this.laby.getFinishLine()[0]==hero.getxPos()) & (this.laby.getFinishLine()[1]==hero.getyPos());
+		return(state);
+	}	
 	
 	public boolean isGameOver() {
 		for(int i = 0; i<monsters.size();i++) {
 			if(monsters.get(i).getxPos()==hero.getxPos() & monsters.get(i).getyPos()==hero.getyPos()) {
+				
 				return true;
 			}
 		}
-		
-
 		return false;
 	}
 	
 	
-	
+	private void generateGame(int level) {
+		this.laby=new Labyrinth(level);
+		this.hero= this.generateHero();
+		this.monsters=this.generateMonsters();
+		this.gameTime=System.currentTimeMillis();
+	}
 	
 	
 	private Hero generateHero() {
@@ -159,16 +164,20 @@ public class PacmanGame implements Game {
 		int[] pos;
 		for (int i=0;i<monsterSpawn.size();i++) {
 			pos=monsterSpawn.get(i);
-			monsters.add(new MonsterIntelligent(pos[0],pos[1]));
+			if (pos[2]==1)	
+				monsters.add(new Monster(pos[0],pos[1]));
+			else
+				monsters.add(new MonsterSmart(pos[0],pos[1]));
 		}
 		return(monsters);
 	}
+
 	
 	private void moveMonsters() {
 		long currTime= System.currentTimeMillis();
 		if((currTime-gameTime>500)& (!this.monsters.isEmpty())) {
 			for(int i = 0; i<monsters.size();i++) {
-				monsters.get(i).move(this.getHero());
+				monsters.get(i).move(this.hero);
 			}
 			this.gameTime= System.currentTimeMillis();
 		}
@@ -220,6 +229,9 @@ public class PacmanGame implements Game {
 	
 	//getters and setters
 
+	
+	//getters and setters
+
 	public Hero getHero() {
 		return hero;
 	}
@@ -231,11 +243,10 @@ public class PacmanGame implements Game {
 	public ArrayList<Monster> getMonstres() {
 		return monsters;
 	}
-
-
 		
 	public ArrayList<Bullet> getBullets() {
 		return bullets;
+
 	}
 	
 	

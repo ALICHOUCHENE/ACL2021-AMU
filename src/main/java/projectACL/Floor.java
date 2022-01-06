@@ -7,6 +7,7 @@ public class Floor extends Tile {
 		this.setCanWalkOn(true);
 		this.setFinishesGame(false);
 		this.setType("Floor");
-		this.setColor(Color.WHITE);
+		//this.setColor(Color.WHITE);
+		this.setImageSource("./images/grass.png");
 	}
 }
