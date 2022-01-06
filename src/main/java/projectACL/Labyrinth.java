@@ -16,15 +16,11 @@ public class Labyrinth {
 		private final static int dimx=12;
 		private final static int dimy=12;
 		
-		private Game game;
-		private Hero hero= new Hero();
-		
-		protected int level;
-
 		
 		private static Tile[][] build= new Tile[dimx][dimy];
 				
 		private int [] heroSpawn;
+		private int [] finishLine;
 		private ArrayList<int[]> monsterSpawn=new ArrayList<int[]>();
 		private ArrayList<int[]> monster2Spawn=new ArrayList<int[]>();
 	
@@ -82,6 +78,7 @@ public class Labyrinth {
 						
 						case 2:
 							build[i][j]=new Door();
+							this.finishLine= new int [] {j,i};
 							break;
 							
 						case 3:
@@ -91,11 +88,11 @@ public class Labyrinth {
 						
 						case 4:
 							build[i][j]=new Floor();
-							this.monsterSpawn.add(new int[] {j,i});
+							this.monsterSpawn.add(new int[] {j,i,1});
 							break;
 						case 5:
 							build[i][j]=new Floor();
-							this.monster2Spawn.add(new int[] {j,i});
+							this.monsterSpawn.add(new int[] {j,i,2});
 							break;
 					
 						default:
@@ -109,21 +106,8 @@ public class Labyrinth {
 			}
 		}
 		
-		public boolean Level_1_Finished() {
-			boolean state;
-			state=(Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());
-			System.out.println(Labyrinth.getDimX()-1);
-			System.out.println(hero.getxPos());
-			return(state);
-			
-		}
-		public boolean Level_2_Finished() {
-			boolean position;
-			position=(Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());
-			return(position);
-		}
+		//getters and setters
 		
-		//getters
 		public static int getDimX() {
 			return Labyrinth.dimx;
 		}
@@ -146,24 +130,19 @@ public class Labyrinth {
 			return monster2Spawn;
 		}
 
-		public Game getGame() {
-			return game;
+		public int[] getFinishLine() {
+			return finishLine;
 		}
 
-		public void setGame(Game game) {
-			this.game = game;
+		public void setFinishLine(int[] finishLine) {
+			this.finishLine = finishLine;
 		}
 		
-		public void setlevel(int level) {
-			this.level=level;
-		}
-		public int getlevel() {
-			return level;
-		}
-		public boolean levelisFinished(int level) {
+
+		/*public boolean levelisFinished(int level) {
 		
 			return (Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());   // this is not working, getxpos is null
 			
-		}
+		}*/
 	
 }

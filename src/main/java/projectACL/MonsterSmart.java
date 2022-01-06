@@ -1,9 +1,10 @@
 package projectACL;
 
 import java.util.Random;
+
 public class MonsterSmart extends Monster {
 	
-	String[] frames = { "./images/monster/monsterSmart.png", "./images/monster/monsterLeft.png", "./images/monster/monsterRight.png"};
+	String[] frames = { "./images/monster/monsterSmart.png", "./images/monster/monsterSmart.png", "./images/monster/monsterSmart.png"};
 	
 	//constructors
 	public MonsterSmart () {
@@ -29,32 +30,133 @@ public class MonsterSmart extends Monster {
 		else return(frames[0]);
 	}
 	
-	public void move(Labyrinth laby) {
-		int newXPos= this.getxPos();
-		int newYPos= this.getyPos();
-		float randomStep;
-		Random rand=new Random();
+public void move(Hero hero) {
 		
 		
-		// get the next step
 		
-		randomStep=randomStep();
+		int xhero=hero.getxPos();
+		int yhero=hero.getyPos();
+		int xmonster=this.getxPos();
+		int ymonster=this.getyPos();
+		int newxPos=0;
+		int newyPos=0;
+		
+		
+		
+		if (xhero<=xmonster & yhero<=ymonster) {
+		
+			if( Labyrinth.validatePos(xmonster-1, ymonster) ) {
+			
+				xmonster--;	
+				newxPos=xmonster;
+				newyPos=ymonster;
+				
+					
+			}
+			else if( Labyrinth.validatePos(xmonster, ymonster-1) ) {
+			
+				ymonster--;	
+				newxPos=xmonster;
+				newyPos=ymonster;
+				
+			}
+			else 
+			 
+				super.move(hero);
+		 
+		}
+		
+		
+		// move up right 
+		
+		if (xhero>=xmonster & yhero <= ymonster) {
+					
+					if( Labyrinth.validatePos(xmonster+1, ymonster)) {
+						
+							xmonster++;	
+							newxPos=xmonster;
+							newyPos=ymonster;
+								
+						}
+					
+					else if( Labyrinth.validatePos(xmonster-1, ymonster) ) {
+						
+						xmonster--;	
+						newxPos=xmonster;
+						newyPos=ymonster;
+					}
+					
+					
+					
+					else if(Labyrinth.validatePos(xmonster, ymonster-1)) {
+						
+							ymonster--;	
+							newxPos=xmonster;
+							newyPos=ymonster;
+							
+						}
+					 else 
+						 
+						 super.move(hero);
+					 
+					}
+		
+		// move down left
+		
+		if (xhero<=xmonster & yhero>=ymonster) {
+			
+			if( Labyrinth.validatePos(xmonster-1, ymonster)) {
+					xmonster--;	
+					newxPos=xmonster;
+					newyPos=ymonster;
+						
+				}
+			else if( Labyrinth.validatePos(xmonster, ymonster+1)) {
+				
+					ymonster++;	
+					newxPos=xmonster;
+					newyPos=ymonster;
+					
+				}
+			 else 
+				 
+				 super.move(hero);
+			 
+			}
+		
+		// move down right
+		
+		if (xhero>=xmonster & yhero>=ymonster) {
+			
+			if( Labyrinth.validatePos(xmonster+1, ymonster)) {
+				
+					xmonster++;	
+					newxPos=xmonster;
+					newyPos=ymonster;
+						
+				}
+			 if( Labyrinth.validatePos(xmonster, ymonster+1)) {
+				
+					ymonster++;	
+					newxPos=xmonster;
+					newyPos=ymonster;
 
-		// define a random direction
+					
+				}
+			 else 
+				 
+				 super.move(hero);
+			 
+			}
 		
-		int pos=2;
-		float randomPos=rand.nextInt(pos);
-
-		if (randomPos == 1)
-			newXPos+=randomStep;
-		else
-			newYPos+=randomStep;
 		
-		if (laby.validatePos(newXPos,newYPos)) {
-			this.setxPos((int) newXPos);
-			this.setyPos((int)newYPos);
+		
+		if (Labyrinth.validatePos(newxPos,newyPos)) {
+			this.setxPos( newxPos);
+			this.setyPos( newyPos);
 			this.setImageSource(getframe()); // animating the moving of the monster
 		}
+		
 	}
 	
 	
@@ -63,16 +165,4 @@ public class MonsterSmart extends Monster {
     }
 	
 	
-	// choose the next step 1 or -1 for x and y
-	private float randomStep() {
-		Random rand=new Random();
-		float randomStep=0;
-		// define a random step
-		int step=3;
-		do {
-		randomStep=rand.nextInt(step)-1;
-		}while(randomStep==0);
-
-		return randomStep;
-	}
 }

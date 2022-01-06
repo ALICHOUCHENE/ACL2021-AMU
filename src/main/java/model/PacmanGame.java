@@ -37,17 +37,15 @@ public class PacmanGame implements Game {
 	
 
 	private Hero hero= new Hero();
-	
 
-	
-	
 	private Labyrinth laby;
 	public ArrayList<MonsterSmart> ghosts;
 	public ArrayList<Monster> monsters;
 	private long gameTime;
+	
 
 	
-	public PacmanGame(String source) {
+	public PacmanGame(String source, int level) {
 
 		BufferedReader helpReader;
 		try {
@@ -61,16 +59,7 @@ public class PacmanGame implements Game {
 			System.out.println("Help not available");
 		}
 
-		
-		this.laby=new Labyrinth(1);
-		this.hero= this.generateHero();
-		this.monsters=this.generateMonsters();
-		this.ghosts=this.generateGhosts();
-		
-		this.gameTime=System.currentTimeMillis();
-		if (laby.levelisFinished(1)) {
-			this.laby=new Labyrinth(2);
-			}
+		this.generateGame(level);
 		
 	}
 
@@ -107,6 +96,7 @@ public class PacmanGame implements Game {
 		
 		
 		moveMonsters();
+		
 	}
 
 	/**
@@ -119,13 +109,10 @@ public class PacmanGame implements Game {
 	}
 	
 	public boolean isFinished() {
-		// le jeu n'est jamais fini
-		boolean state=false;// (Labyrinth.getDimX()-1==hero.getxPos()) & (Labyrinth.getDimY()-2==hero.getyPos());  //TO DOOO , i just kept it like this to test
+		boolean state=false;
+		state=(this.laby.getFinishLine()[0]==hero.getxPos()) & (this.laby.getFinishLine()[1]==hero.getyPos());
 		return(state);
-	}
-	
-
-	
+	}	
 	
 	public boolean isGameOver() {
 		for(int i = 0; i<monsters.size();i++) {
@@ -134,13 +121,16 @@ public class PacmanGame implements Game {
 				return true;
 			}
 		}
-		
-
 		return false;
 	}
 	
 	
-	
+	private void generateGame(int level) {
+		this.laby=new Labyrinth(level);
+		this.hero= this.generateHero();
+		this.monsters=this.generateMonsters();
+		this.gameTime=System.currentTimeMillis();
+	}
 	
 	
 	private Hero generateHero() {
@@ -156,30 +146,27 @@ public class PacmanGame implements Game {
 		int[] pos;
 		for (int i=0;i<monsterSpawn.size();i++) {
 			pos=monsterSpawn.get(i);
-			monsters.add(new Monster(pos[0],pos[1]));
+			if (pos[2]==1)	
+				monsters.add(new Monster(pos[0],pos[1]));
+			else
+				monsters.add(new MonsterSmart(pos[0],pos[1]));
 		}
 		return(monsters);
 	}
-	private ArrayList<MonsterSmart> generateGhosts(){
-		ArrayList<int[]> monster2Spawn = laby.getMonster2Spawn();
-		ArrayList<MonsterSmart> ghosts= new ArrayList<MonsterSmart>();
-		int[] pos;
-		for (int i=0;i<monster2Spawn.size();i++) {
-			pos=monster2Spawn.get(i);
-			ghosts.add(new MonsterSmart(pos[0],pos[1]));
-		}
-		return(ghosts);
-	}
+
 	
 	private void moveMonsters() {
 		long currTime= System.currentTimeMillis();
 		if(currTime-gameTime>500) {
 			for(int i = 0; i<monsters.size();i++) {
-				monsters.get(i).move(laby);
+				monsters.get(i).move(this.hero);
 			}
 		this.gameTime= System.currentTimeMillis();
 		}
 	}
+
+	
+	//getters and setters
 
 	public Hero getHero() {
 		return hero;

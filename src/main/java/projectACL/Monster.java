@@ -28,7 +28,7 @@ public class Monster extends GameCharacter {
 		else return(frames[0]);
 	}
 	
-	public void move(Labyrinth laby) {
+	public void move(Hero hero) {
 		int newXPos= this.getxPos();
 		int newYPos= this.getyPos();
 		float randomStep;
@@ -49,7 +49,7 @@ public class Monster extends GameCharacter {
 		else
 			newYPos+=randomStep;
 		
-		if (laby.validatePos(newXPos,newYPos)) {
+		if (Labyrinth.validatePos(newXPos,newYPos)) {
 			this.setxPos((int) newXPos);
 			this.setyPos((int)newYPos);
 			this.setImageSource(getframe()); // animating the moving of the monster
