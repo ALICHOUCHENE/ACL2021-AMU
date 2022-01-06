@@ -7,6 +7,8 @@ public class Door extends Tile{
 		this.setCanWalkOn(true);
 		this.setFinishesGame(true);
 		this.setType("Door");
-		this.setColor(Color.GREEN);
+		//this.setColor(Color.GREEN);
+		this.setImageSource("./images/door.png");
 	}
+	
 }

@@ -7,6 +7,7 @@ public class Wall extends Tile {
 		this.setCanWalkOn(false);
 		this.setFinishesGame(false);
 		this.setType("Wall");
-		this.setColor(Color.BLACK);
+		//this.setColor(Color.BLACK);
+		this.setImageSource("./images/wall3.png");
 	}
 }

@@ -16,7 +16,7 @@ class TestHero {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		Labyrinth laby=new Labyrinth(1);
+		Labyrinth laby = new Labyrinth(1);
 	}
 
 	@AfterAll
@@ -47,7 +47,7 @@ class TestHero {
 		Hero instance;
 		instance=new Hero(1,2);
 		instance.moveUp();
-		assertEquals(instance.getyPos(),1);
+		assertEquals(instance.getyPos(),0);
 		
 	}
 	

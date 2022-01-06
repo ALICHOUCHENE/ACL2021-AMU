@@ -9,6 +9,7 @@ package model;
 
 
 import java.awt.Graphics;
+
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -23,6 +24,8 @@ import projectACL.Bullet;
 import projectACL.Hero;
 import projectACL.Labyrinth;
 import projectACL.Monster;
+import projectACL.MonsterSmart;
+import projectACL.Score;
 import projectACL.Tile;
 
 public class MainPainter implements GamePainter{
@@ -31,6 +34,7 @@ public class MainPainter implements GamePainter{
 	ArrayList<Monster> monsters;
 	ArrayList<Bullet> bullets;
 	Tile[][] tiles;
+	
 
 	public MainPainter(PacmanGame game) {
 		this.pacman=game.getHero();
@@ -46,6 +50,7 @@ public class MainPainter implements GamePainter{
 		PacmanPainter.draw(im, pacman);
 		MonsterPainter.draw(im,monsters);
 		BulletPainter.draw(im,bullets);
+
 	}
 	
 	
