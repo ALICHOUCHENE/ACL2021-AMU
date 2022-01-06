@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import projectACL.Hero;
+import projectACL.Labyrinth;
 
 
 
@@ -16,6 +17,7 @@ class TestHero {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		Labyrinth laby = new Labyrinth(1);
 	}
 
 	@AfterAll
@@ -46,7 +48,7 @@ class TestHero {
 		Hero instance;
 		instance=new Hero(0,1);
 		instance.moveUp();
-		assertEquals(instance.getyPos(),5);
+		assertEquals(instance.getyPos(),0);
 		
 		
 	}
