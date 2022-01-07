@@ -4,15 +4,26 @@ import java.awt.Color;
 
 public abstract class Tile {
 
-	protected static final int length = 60;
-	protected static final int width = 60;
+	protected static int length = 60;
+	protected static int width = 60;
 	private boolean canWalkOn=false;
-	private boolean finishesGame;
+	private boolean finishesGame= false;
+	private boolean teleporte = false;
 	private String imageSource;
 	private String type;
 	private Color color;
 	
 	
+	
+	
+	public static void setLength(int length) {
+		Tile.length = length;
+	}
+
+	public static void setWidth(int width) {
+		Tile.width = width;
+	}
+
 	public String getType() {
 		return type;
 	}
@@ -63,6 +74,14 @@ public abstract class Tile {
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	public boolean isTeleporte() {
+		return teleporte;
+	}
+
+	public void setTeleporte(boolean teleporte) {
+		this.teleporte = teleporte;
 	}
 	
 	

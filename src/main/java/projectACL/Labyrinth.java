@@ -56,17 +56,16 @@ public class Labyrinth {
 			String line;
 			String lastLine = null;
 			String tiles[];
-			this.dimx=0;
-			this.dimy=0;
+			Labyrinth.dimx=0;
+			Labyrinth.dimy=0;
 			try {
 				while ( (line = LabReader.readLine()) != null) {
 					lastLine = line;
-					this.dimy++;
+					Labyrinth.dimy++;
 				}
 				tiles = lastLine.split(",");
-				this.dimx=tiles.length;
-				System.out.println(this.dimx);
-				System.out.println(this.dimy);
+				Labyrinth.dimx=tiles.length;
+
 			}
 			catch(IOException e) {
 				System.out.println("Fichier source inexistant");

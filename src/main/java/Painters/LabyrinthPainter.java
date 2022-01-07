@@ -23,8 +23,7 @@ public class LabyrinthPainter {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 		for (int i=0; i<tiles[0].length;i++) {
 			for(int j=0;j<tiles.length;j++) {
-				//crayon.setColor(tiles[j][i].getColor());
-				//crayon.fillRect(i*Tile.getLength(),j*Tile.getWidth(),Tile.getLength(),Tile.getWidth());
+				
 				Image img;
 				try {
 					String Source = ((tiles[j][i].getImageSource()));
@@ -33,9 +32,11 @@ public class LabyrinthPainter {
 					crayon.drawImage(img, Tile.getLength() *i,Tile.getWidth()*j,null);
 					
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					crayon.setColor(tiles[j][i].getColor());
+					crayon.fillRect(i*Tile.getLength(),j*Tile.getWidth(),Tile.getLength(),Tile.getWidth());
 					e.printStackTrace();
-				}			}
+				}			
+			}
 		}
 	}
 	
