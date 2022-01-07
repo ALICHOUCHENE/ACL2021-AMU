@@ -95,6 +95,7 @@ public class PacmanGame implements Game {
 		
 		case SHOOT:
 			this.generateBullet();
+			//hero.shoot(); TODO
 		break;
 		
 		case IDLE:

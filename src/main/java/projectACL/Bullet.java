@@ -2,6 +2,7 @@ package projectACL;
 
 import java.util.ArrayList;
 
+
 import engine.Cmd;
 
 public class Bullet {
@@ -12,6 +13,7 @@ public class Bullet {
 	private boolean bullet_alive=true;
 	private long trigger_time;
 	private int speed;
+	private String imageSource; 
 	
 	public Bullet(Hero pacman, Labyrinth laby) {
 		this.direction=pacman.getLast_move();
@@ -20,6 +22,7 @@ public class Bullet {
 		this.evolve(laby);
 		this.trigger_time=System.currentTimeMillis();
 		this.speed=500;//the speed of the bullet
+		this.setImageSource("./images/bullet.png");
 	}
 	
 	
@@ -91,7 +94,13 @@ public class Bullet {
 		this.trigger_time = trigger_time;
 	}
 	
-	
+	public String getImageSource() {
+		return imageSource;
+	}
+
+	public void setImageSource(String imageSource) {
+		this.imageSource = imageSource;
+	}
 
 	
 }
