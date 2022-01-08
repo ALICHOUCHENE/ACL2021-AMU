@@ -27,7 +27,8 @@ public class Main {
 			System.out.println("Game hasn't started yet");
 		}
 
-
+		System.out.println("Game has started !");
+		
 		for (int level = 1; level<= numOfLevels ; level++) {
 			// creation du jeu particulier et de son afficheur
 			PacmanGame game = new PacmanGame("helpFilePacman.txt",level);
@@ -43,6 +44,7 @@ public class Main {
 				break;
 			}
 		}
+
 			
 	}
 

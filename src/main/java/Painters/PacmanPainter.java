@@ -32,6 +32,8 @@ public class PacmanPainter {
 //			img = ImageIO.read(new File(herosprite.currentSpriteGet(animationstage, controller.getCommand(),heros.getType())));
 			crayon.drawImage(img, Tile.getLength()* pacman.getxPos(),Tile.getWidth()*pacman.getyPos(),null);
 			
+			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
