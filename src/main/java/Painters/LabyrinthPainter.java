@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
 import projectACL.Floor;
+import projectACL.Hero;
 import projectACL.Tile;
 
 public class LabyrinthPainter {
@@ -19,8 +20,10 @@ public class LabyrinthPainter {
 		super();
 	}
 	
-	public static void colorLabyrinth(BufferedImage im, Tile[][] tiles) {
+	public static void colorLabyrinth(BufferedImage im, Tile[][] tiles,Hero pacman)  {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
+
+		int HP = pacman.getlives();
 		for (int i=0; i<tiles.length;i++) {
 			for(int j=0;j<tiles[0].length;j++) {
 				//crayon.setColor(tiles[j][i].getColor());
@@ -31,12 +34,28 @@ public class LabyrinthPainter {
 					img=ImageIO.read(new File(Source)); 
 					
 					crayon.drawImage(img, Tile.getLength() *i,Tile.getWidth()*j,null);
+
+					
 					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}			}
+				}		
+			}
 		}
-	}
+		for (int k=0;k<HP;k++){ 
+			Image img2;
+			String Source2 = ("src/images/heart_3.png");
+			try {
+				img2=ImageIO.read(new File(Source2));
+				crayon.drawImage(img2,Tile.getLength()*(k)+8,12,null);	
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 	
-}
+		
+
+
+	}}}
+

@@ -11,17 +11,26 @@ public class Hero extends GameCharacter {
 						"./images/hero/move/heroleft.png", "./images/hero/move/heroleft1.png",
 						"./images/hero/move/heroleft2.png", "./images/hero/move/heroleft3.png" 
 					};
-	
 	//constructors
 		private Cmd last_move = Cmd.RIGHT;
+	private int lives;
 		public Hero () {
 				super();
 				this.setImageSource(frames[0]);
-			}
+				this.lives=3;
+				}
 			
 		public Hero(int xPos, int yPos) {
 			super(xPos,yPos);
 			this.setImageSource(frames[0]);
+			this.lives=3;
+		}
+		
+		public int getlives() {
+			return this.lives;
+		}
+		public void lose1HP (){
+			this.lives-=1;
 		}
 		
 		

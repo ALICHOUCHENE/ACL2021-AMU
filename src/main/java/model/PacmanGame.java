@@ -135,13 +135,19 @@ public class PacmanGame implements Game {
 	public boolean isGameOver() {
 		for(int i = 0; i<monsters.size();i++) {
 			if(monsters.get(i).getxPos()==hero.getxPos() & monsters.get(i).getyPos()==hero.getyPos()) {
-				
-				return true;
-			}
-		}
+				hero.lose1HP();
+				System.out.println(hero.getlives());
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+}}
+
+		if (hero.getlives()<=0) {return true;}
 		return false;
-	}
-	
+}
 	
 	private void generateGame(int level) {
 		this.laby=new Labyrinth(level);
