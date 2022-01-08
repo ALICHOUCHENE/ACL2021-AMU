@@ -81,7 +81,7 @@ class TestHero {
 	public void testTeleporte() {
 		Hero instance;
 		instance=new Hero(0,1);
-		instance.teleporte(6, 6);
+		instance.teleporte(new int [] {6, 6});
 		assertEquals(instance.getxPos(),6);
 		assertEquals(instance.getyPos(),6);
 

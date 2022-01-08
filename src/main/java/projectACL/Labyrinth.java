@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import engine.Game;
 
@@ -20,6 +21,8 @@ public class Labyrinth {
 				
 		private int [] heroSpawn;
 		private int [] finishLine;
+		private static ArrayList<int[]> wormholes = new ArrayList<int[]>();
+		
 		private ArrayList<int[]> monsterSpawn=new ArrayList<int[]>();
 		private ArrayList<int[]> monster2Spawn=new ArrayList<int[]>();
 	
@@ -50,6 +53,27 @@ public class Labyrinth {
 		// this function checks if the hero's movement (x,y) is valid in the labyrinth or not
 		public static boolean validatePos(int xPos, int yPos) {
 			return (( 0 <= xPos ) && (xPos < Labyrinth.dimx)  && (0 <= yPos) && (yPos < Labyrinth.dimy)&& ( build[yPos][xPos].isCanWalkOn()));
+		}
+		
+		public static int[] teleporte (int xPos, int yPos){
+			if (build[yPos][xPos].isTeleporte()) {
+				if (wormholes.isEmpty()) {
+					return null;
+				}else if (wormholes.size()==1) {
+					return null;
+				}
+				else {
+					Random rand = new Random();
+					int random_index;
+					do {
+						random_index= rand.nextInt(wormholes.size());
+					}while((wormholes.get(random_index)[0]==xPos) && (wormholes.get(random_index)[1]==yPos));
+					int newxPos = wormholes.get(random_index)[0];
+					int newyPos = wormholes.get(random_index)[1];
+					return(new int[] {newxPos,newyPos});
+				}
+			}else 
+				return null;
 		}
 		
 		private void setLabyrinthSize(BufferedReader LabReader) throws IOException {
@@ -116,6 +140,10 @@ public class Labyrinth {
 							build[i][j]=new Floor();
 							this.monsterSpawn.add(new int[] {j,i,2});
 							break;
+						case 6:
+							build[i][j]=new Wormhole();
+							this.wormholes.add(new int [] {j,i});
+							break;
 					
 						default:
 							break;
@@ -159,6 +187,14 @@ public class Labyrinth {
 
 		public void setFinishLine(int[] finishLine) {
 			this.finishLine = finishLine;
+		}
+
+		public ArrayList<int[]> getWormholes() {
+			return wormholes;
+		}
+
+		public void setWormholes(ArrayList<int[]> wormholes) {
+			this.wormholes = wormholes;
 		}
 		
 

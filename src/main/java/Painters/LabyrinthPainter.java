@@ -28,13 +28,11 @@ public class LabyrinthPainter {
 				try {
 					String Source = ((tiles[j][i].getImageSource()));
 					img=ImageIO.read(new File(Source)); 
-					
 					crayon.drawImage(img, Tile.getLength() *i,Tile.getWidth()*j,null);
 					
-				} catch (IOException e) {
+				} catch (Exception e) {
 					crayon.setColor(tiles[j][i].getColor());
 					crayon.fillRect(i*Tile.getLength(),j*Tile.getWidth(),Tile.getLength(),Tile.getWidth());
-					e.printStackTrace();
 				}			
 			}
 		}
