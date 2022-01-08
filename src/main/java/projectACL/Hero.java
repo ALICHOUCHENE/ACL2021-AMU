@@ -13,14 +13,6 @@ public class Hero extends GameCharacter {
 						"./images/hero/shoot/shoot.png", "./images/hero/shoot/shootright.png"
 					};
 	
-	/*String[] framesRight = {"./images/hero/move/hero.png", "./images/hero/move/hero1.png", 
-							"./images/hero/move/hero2.png", "./images/hero/move/hero3.png"
-							};
-	String[] framesLeft = {"./images/hero/move/heroleft.png", "./images/hero/move/heroleft1.png",
-						"./images/hero/move/heroleft2.png", "./images/hero/move/heroleft3.png"
-							};
-	
-	String[] framesShoot = {"./images/hero/shoot/shoot.png", "./images/hero/shoot/shootright.png"};*/
 	
 	//constructors
 		private Cmd last_move = Cmd.RIGHT;
@@ -102,18 +94,10 @@ public class Hero extends GameCharacter {
 				
 					frame = frames[1];
 				}
-			/*case SHOOT:
-				if( (getImageSource()== frames[2]) | (getImageSource()==frames[3]) |  (getImageSource()==frames[4]) | (getImageSource()==frames[5]) ) {
-					frame = frames[11];
-				}
-				else if ((getImageSource()== frames[6]) | (getImageSource()==frames[7]) |  (getImageSource()==frames[8]) | (getImageSource()==frames[9])) {
-				
-					frame = frames[10];
-				}*/
 			}
 			
-			
 			return(frame);
+			
 		}
 		
 		//update hero's position
@@ -209,13 +193,7 @@ public class Hero extends GameCharacter {
 		public void setLast_move(Cmd last_move) {
 			this.last_move = last_move;
 		}		
-		
-		//TODO	
-		/*public void shoot() {
-			Cmd commande = getLast_move();
-			this.setImageSource(getframe(commande));
-		}*/
-		
+	
 		
 		
 }

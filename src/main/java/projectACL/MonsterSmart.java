@@ -23,19 +23,27 @@ public class MonsterSmart extends Monster {
 	
 	// animating the moving of the monster
 	public String getframe() {
-		//switch(getLastMove()) {
 		
-		//case RIGHT:
-			if (getImageSource()==(frames[0]) ) {
-				
-				return(frames[1]);
-			}
-			else if (getImageSource()==(frames[1])) {
-				return(frames[2]);
-			}
-			else return(frames[0]);
+		String frame="";
+		switch(getLastMove()) {
+		
+		case RIGHT:
+			 frame= frames[2];
+			 break;
+		case LEFT:
+			frame=frames[1];
+			break;
+		case UP:
+			frame=frames[0];
+			break;
+		case DOWN:
+			frame= frames[0];
+			break;
 		
 		}
+		return(frame);
+		
+	}
 	
 public void move(Hero hero) {
 		
