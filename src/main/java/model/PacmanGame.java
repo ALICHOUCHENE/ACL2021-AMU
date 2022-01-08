@@ -128,7 +128,7 @@ public class PacmanGame implements Game {
 	
 	public boolean isFinished() {
 		boolean state=false;
-		state=(this.laby.getFinishLine()[0]==hero.getxPos()) & (this.laby.getFinishLine()[1]==hero.getyPos());
+		state=(this.laby.getFinishLine()[0]==hero.getxPos()) && (this.laby.getFinishLine()[1]==hero.getyPos());
 		return(state);
 	}	
 	
