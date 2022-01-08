@@ -20,7 +20,7 @@ public class LabyrinthPainter {
 		super();
 	}
 	
-	public static void colorLabyrinth(BufferedImage im, Tile[][] tiles,Hero pacman) {
+	public static void colorLabyrinth(BufferedImage im, Tile[][] tiles,Hero pacman)  {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
 
 		int HP = pacman.getlives();
@@ -45,13 +45,17 @@ public class LabyrinthPainter {
 		}
 		for (int k=0;k<HP;k++){ 
 			Image img2;
+			String Source2 = ("src/images/heart_3.png");
 			try {
-			String Source2 = ("src/images/heart.png");
-			img2=ImageIO.read(new File(Source2)); 
-			crayon.drawImage(img2, Tile.getLength()*(k+3),Tile.getWidth()*(tiles[0].length-1),null);
-	}	catch (IOException e) {
-		e.printStackTrace();
-	}
+				img2=ImageIO.read(new File(Source2));
+				crayon.drawImage(img2,Tile.getLength()*(k)+8,12,null);	
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 	
-}
-		}}
+		
+
+
+	}}}
+
