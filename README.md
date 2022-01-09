@@ -1,68 +1,29 @@
-# ACL2021-AMU
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Lara Croft X Pacman
+
+`Lara Croft X Pacman` is a labyrinth game developed with Java.
 
 
-Equipe:Oumnia, Maha, Ali, Mahdi, Moad
+![demo](demo.png)
 
 
-## Installation de Maven
+## Installation
+### Prerequisites
+You need [Maven](https://maven.apache.org/) to run this game.
 
-### Installer Maven sur Linux :
->sudo apt update
+## How to play
 
->sudo apt install maven
-
-
-### Installer Maven sur Windows :
-
-* Sur le site officiel de Maven et télécharger le fichier zip Maven.
-
-* Extractez le fichier zip.
-
-* Appuyez sur la touche Windows, et cherchez l'option «Afficher les paramètres système avancés». 
-
-* Dans la boîte de dialogue Propriétés système, sélectionnez l’onglet "Avancé" et cliquez sur le bouton "Variables d’environnement".
-
-* Dans la boîte de dialogue "Variables d’environnement", Variables système , Cliquez sur le bouton "Nouveau..." et ajoutez une variable MAVEN_HOME et pointez la sur le fichier que vous avez décompressé.
-
-* Dans les variables système, rechercher PATH, cliquez sur le bouton "Editer". Dans la boîte de dialogue "Modifier la varibale d'environnement", cliquez sur le bouton "Nouveau" et ajoutez MAVEN_HOME .
-
-
-### Installer Maven sur Linux :
-Tapez les commandes suivantes:
-
-* sudo apt-get remove maven2
-
-* sudo apt-get update
-
-* sudo apt-get install maven
-
-
-### Installer Maven sur Mac :
-
-* Aller sur le site officiel de Maven et télécharger le fichier Maven.
-
-* Décompreser le fichier.
-
-* Fixer les permissions :
-    >chown -R root:wheel Downloads/apache-maven*
-
-* Changer de place le contenu de Maven :
-    >mv Downloads/apache-maven* /opt/apache-maven
-
-* Archiver la session :
-
-    >exit
-
-* Ajouter Maven au PATH :
-    >nano $HOME/.profile
-    
-    >export PATH=$PATH:/opt/apache-maven/bin
-    
-## Execution de l'application
-
-```p
+```bash
 mvn compile
 mvn exec:java -Dexec.mainClass=start.Main
 ```
 
- 
+
+## Support
+If you encounter a problem, want to ask for help, or want to suggest a feature, feel free to [open an issue](https://github.com/ALICHOUCHENE/ACL2021-AMU/issues).
+
+## Authors
+This game started as a school project by [Maha Gaied](https://github.com/mahagaied), [Oumnia Anouk](https://github.com/WishAnk), [Moad Benslimane](https://github.com/MoadBens), [Mahdi Chaari](https://github.com/OriginalPou) and [Ali Chouchene](https://github.com/ALICHOUCHENE) 
+
+# License
+Lara Croft X Pacman is licensed under the [MIT license](LICENSE).
