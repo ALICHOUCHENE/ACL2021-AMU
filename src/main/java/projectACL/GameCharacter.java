@@ -4,6 +4,7 @@ abstract class GameCharacter {
 	
 	private int xPos;
 	private int yPos;
+	private boolean teleporting = false;
 	
 	private String ImageSource;
 	
@@ -34,10 +35,33 @@ abstract class GameCharacter {
 
 	abstract public void move(Hero hero);
 	abstract public void strike(GameCharacter character);
-	abstract public void teleporte( int x , int y);
-
-
-
+	
+	public void moveToPos( int [] pos) {
+		int newXPos= pos[0];
+		int newYPos= pos[1];
+		if (Labyrinth.validatePos(newXPos, newYPos)) {
+			this.setxPos(newXPos);
+			this.setyPos(newYPos);	
+		}	
+	}
+	
+	public boolean teleporte() {
+			
+			int [] newPos;
+			if ((newPos=Labyrinth.teleporte(this.getxPos(), this.getyPos()))!=null) {
+				if (!this.isTeleporting()) {
+					this.moveToPos(newPos);
+					this.setTeleporting(true);
+					return true;
+				}
+			}else {
+				if (this.isTeleporting()) {
+					this.setTeleporting(false);
+				}
+			}
+			return false;
+		}
+	
 	
 	public void setImageSource(String ImageSource) {
 		this.ImageSource = ImageSource;
@@ -45,6 +69,14 @@ abstract class GameCharacter {
 	
 	public String getImageSource() {
 		return ImageSource;
+	}
+	
+	public boolean isTeleporting() {
+		return teleporting;
+	}
+
+	public void setTeleporting(boolean teleporting) {
+		this.teleporting = teleporting;
 	}
 
 

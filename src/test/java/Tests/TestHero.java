@@ -84,7 +84,7 @@ class TestHero {
 	public void testTeleporte() {
 		Hero instance;
 		instance=new Hero(0,1);
-		instance.teleporte(6, 6);
+		instance.teleporte(new int [] {6, 6});
 		assertEquals(instance.getxPos(),6);
 		assertEquals(instance.getyPos(),6);
 
@@ -104,6 +104,15 @@ class TestHero {
 		instance=new Hero(100,100);
 		Assertions.assertThrows(IllegalArgumentException.class, () -> instance.getxPos());
 	}
+	
+	@Test
+	public void testCreateNegativeXY() {
+		Hero instance;
+		instance=new Hero(-10,-10);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> instance.getxPos());
+	}
+	
+	
 	
 	
 	

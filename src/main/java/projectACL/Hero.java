@@ -16,6 +16,7 @@ public class Hero extends GameCharacter {
 	
 	//constructors
 		private Cmd last_move = Cmd.RIGHT;
+		
 		public Hero () {
 				super();
 				this.setImageSource(frames[0]);
@@ -173,9 +174,9 @@ public class Hero extends GameCharacter {
 		}
 
 		
-		public void teleporte( int x , int y) {
-			int newXPos= x;
-			int newYPos= y;
+		public void teleporte( int[] newPos) {
+			int newXPos= newPos[0];
+			int newYPos= newPos[1];
 			if (Labyrinth.validatePos(newXPos, newYPos)) { 
 				this.setxPos(newXPos);
 				this.setyPos(newYPos);
@@ -192,8 +193,13 @@ public class Hero extends GameCharacter {
 
 		public void setLast_move(Cmd last_move) {
 			this.last_move = last_move;
-		}		
-	
 		
+	
+
+		}
+		
+
+		
+				
 		
 }
