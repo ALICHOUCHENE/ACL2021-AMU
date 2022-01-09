@@ -22,7 +22,7 @@ public class Labyrinth {
 		private int [] finishLine;
 		private ArrayList<int[]> monsterSpawn=new ArrayList<int[]>();
 		private ArrayList<int[]> monster2Spawn=new ArrayList<int[]>();
-	
+		private ArrayList<int[]> LifeSpawn=new ArrayList<int[]>();
 		// Constructor
 
 		public  Labyrinth(int level) {			
@@ -49,6 +49,7 @@ public class Labyrinth {
 		public static boolean validatePos(int xPos, int yPos) {
 			return (( 0 <= xPos ) && (xPos < Labyrinth.dimx)  && (0 <= yPos) && (yPos < Labyrinth.dimy)&& ( build[yPos][xPos].isCanWalkOn()));
 		}
+		
 		
 		private void setCases(BufferedReader LabReader) throws IOException { 
 			
@@ -93,7 +94,10 @@ public class Labyrinth {
 							build[i][j]=new Floor();
 							this.monsterSpawn.add(new int[] {j,i,2});
 							break;
-					
+						case 6:
+							build[i][j]=new Life();
+							this.LifeSpawn.add(new int[] {j,i});
+							break;
 						default:
 							break;
 						}			
@@ -125,6 +129,10 @@ public class Labyrinth {
 
 		public ArrayList<int[]> getMonsterSpawn() {
 			return monsterSpawn;
+		}
+		
+		public ArrayList<int[]> getLifeSpawn() {
+			return LifeSpawn;
 		}
 		public ArrayList<int[]> getMonster2Spawn() {
 			return monster2Spawn;

@@ -23,7 +23,7 @@ import projectACL.Boss;
 import projectACL.MonsterSmart;
 import projectACL.Tile;
 import projectACL.Door;
-
+import projectACL.Life;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -45,7 +45,7 @@ public class PacmanGame implements Game {
 	private ArrayList<Monster> monsters;
 	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	private long gameTime;
-	
+	private ArrayList<Life> Lives;
 
 	
 	public PacmanGame(String source, int level) {
@@ -109,8 +109,10 @@ public class PacmanGame implements Game {
 		
 		// evolve bullets
 		moveBullets();
-
-	}
+		
+		// evolve life
+		evolveLife();
+		}
 
 	
 	
@@ -147,6 +149,7 @@ public class PacmanGame implements Game {
 		this.laby=new Labyrinth(level);
 		this.hero= this.generateHero();
 		this.monsters=this.generateMonsters();
+		this.Lives=this.generateLife();
 		this.gameTime=System.currentTimeMillis();
 	}
 	
@@ -172,6 +175,58 @@ public class PacmanGame implements Game {
 		return(monsters);
 	}
 
+	private ArrayList<Life> generateLife(){
+		ArrayList<int[]> lifeSpawn = laby.getLifeSpawn();
+		ArrayList<Life> Lives= new ArrayList<Life>();
+		int[] pos;
+		for (int i=0;i<lifeSpawn.size();i++) {
+			pos=lifeSpawn.get(i);
+			Lives.add(new Life());
+			Lives.get(i).setXpos(pos[0]);
+			Lives.get(i).setYpos(pos[1]);
+		}
+		return(Lives);
+	}
+	
+	private void evolveLife() {
+		int xHero;
+		int yHero;
+		int xheart;
+		int yheart;
+		
+		for(int i=0;i<Lives.size();i++) {
+			xHero=this.hero.getxPos();
+			yHero=this.hero.getyPos();
+			xheart=Lives.get(i).getXpos();
+			yheart=Lives.get(i).getYpos();
+			
+			if(xHero==xheart && yHero==yheart && Lives.get(i).getState()) {
+				this.hero.addLife();
+				Lives.get(i).setState();
+				
+				
+			}
+			
+			if ((xheart!=xHero | yheart!=yHero) & Lives.get(i).getState()==false) 
+				Lives.get(i).updateIcone2();
+			
+			if (xHero==xheart & yHero==yheart & Lives.get(i).getState()==false)
+				Lives.get(i).updateIcone1();
+					
+			
+
+			}
+		}
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private void moveMonsters() {
 		long currTime= System.currentTimeMillis();
@@ -234,6 +289,9 @@ public class PacmanGame implements Game {
 
 	public Hero getHero() {
 		return hero;
+	}
+	public ArrayList<Life> getLife() {
+		return Lives;
 	}
 
 	public Labyrinth getLaby() {

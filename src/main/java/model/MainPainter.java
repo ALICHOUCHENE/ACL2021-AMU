@@ -18,7 +18,7 @@ import Painters.MonsterPainter;
 import Painters.BulletPainter;
 import Painters.LabyrinthPainter;
 import Painters.ScorePainter;
-
+import Painters.LifePainter;
 import engine.GamePainter;
 import projectACL.Bullet;
 import projectACL.Hero;
@@ -27,12 +27,13 @@ import projectACL.Monster;
 import projectACL.MonsterSmart;
 import projectACL.Score;
 import projectACL.Tile;
-
+import projectACL.Life;
 public class MainPainter implements GamePainter{
 	
 	Hero pacman;
 	ArrayList<Monster> monsters;
 	ArrayList<Bullet> bullets;
+	ArrayList<Life> Lives;
 	Tile[][] tiles;
 	
 
@@ -41,6 +42,7 @@ public class MainPainter implements GamePainter{
 		this.monsters=game.getMonstres();
 		this.tiles=Labyrinth.getBuild();
 		this.bullets= game.getBullets();
+		this.Lives=game.getLife();
 	}
 
 	
@@ -50,6 +52,7 @@ public class MainPainter implements GamePainter{
 		PacmanPainter.draw(im, pacman);
 		MonsterPainter.draw(im,monsters);
 		BulletPainter.draw(im,bullets);
+		LifePainter.draw(im,Lives);
 
 	}
 	

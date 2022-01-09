@@ -11,7 +11,7 @@ public class Hero extends GameCharacter {
 						"./images/hero/move/heroleft.png", "./images/hero/move/heroleft1.png",
 						"./images/hero/move/heroleft2.png", "./images/hero/move/heroleft3.png" 
 					};
-	
+	private int live=3;
 	//constructors
 		private Cmd last_move = Cmd.RIGHT;
 		public Hero () {
@@ -123,6 +123,7 @@ public class Hero extends GameCharacter {
 				this.setyPos(newYPos);
 				this.last_move=Cmd.DOWN;
 				this.setImageSource(getframe(commande));
+				
 
 			}
 			else System.out.println(" Hero can't move down ");
@@ -190,7 +191,10 @@ public class Hero extends GameCharacter {
 			this.last_move = last_move;
 		}		
 		
-		
+		public void addLife() {
+			if(this.live<3)
+				live++;
+		}
 		
 		
 }
