@@ -19,7 +19,7 @@ public class HomeScreenPainter {
     
 
     public static void HomeScreenPaint() {                //METHODE POUR DESSINER LE HOMESCREEN
-        JFrame fenetre= new JFrame("Jeu Pacman");			//FENETRE DU HOMESCREEN
+        JFrame fenetre= new JFrame("LARA CROFT X PACMAN");			//FENETRE DU HOMESCREEN
 
 
          fenetre.setSize(700,350);
