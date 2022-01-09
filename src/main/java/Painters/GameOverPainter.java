@@ -1,17 +1,20 @@
 package Painters;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-public class GameOver
-{
-   
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class GameOverPainter {
+	
 	private static boolean Try_Again = false;
 	
-	public static void GameO() 
+	public static void draw() 
    {
       JFrame f = new JFrame("Game Over");
       
@@ -19,10 +22,10 @@ public class GameOver
       
       f.setSize(720,600);
       
-      // Définir la disposition sur null
+      // Dï¿½finir la disposition sur null
       f.setLayout(null);
       
-      // Créer le bouton
+      // Crï¿½er le bouton
       JButton btn = new JButton("TryAgain");
       
       btn.setForeground(Color.WHITE);
@@ -30,7 +33,7 @@ public class GameOver
       btn.setFont(new Font("Arial", Font.PLAIN, 30));
       btn.setFocusPainted(false);
      
-      // Définir la position et la taille du bouton
+      // Dï¿½finir la position et la taille du bouton
       btn.setBounds(250,525,200,35);
       f.add(btn);
       f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,10 +52,7 @@ public class GameOver
 		return Try_Again;
 	}
 
-	public static void setTryAgain(boolean Try_again) {
-		GameOver.Try_Again = Try_Again;
+	public static void setTryAgain(boolean Try_Again) {
+		GameOverPainter.Try_Again = Try_Again;
 	}
-
-	
-	
 }
