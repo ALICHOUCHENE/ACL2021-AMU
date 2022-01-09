@@ -22,4 +22,5 @@ public interface Game {
 	public boolean isFinished();
 	public boolean isGameOver();
 
+	
 }

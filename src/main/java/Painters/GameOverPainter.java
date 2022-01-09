@@ -23,9 +23,11 @@ public class GameOverPainter {
       f.setSize(720,600);
       
       // D�finir la disposition sur null
+      
       f.setLayout(null);
       
       // Cr�er le bouton
+      
       JButton btn = new JButton("TryAgain");
       
       btn.setForeground(Color.WHITE);
@@ -34,6 +36,7 @@ public class GameOverPainter {
       btn.setFocusPainted(false);
      
       // D�finir la position et la taille du bouton
+      
       btn.setBounds(250,525,200,35);
       f.add(btn);
       f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,6 +51,7 @@ public class GameOverPainter {
          
    }
 	//setters and getters
+	
     public static boolean TryAgain() {
 		return Try_Again;
 	}

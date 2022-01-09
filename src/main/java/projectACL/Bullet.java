@@ -22,11 +22,14 @@ public class Bullet {
 		this.yPos=pacman.getyPos();
 		this.evolve(laby);
 		this.trigger_time=System.currentTimeMillis();
-		this.speed=500;//the speed of the bullet
+		//the speed of the bullet
+		this.speed=500;
 	}
 	
 	
+	
 	//bullets moving in the labyrinth
+	
 	public void evolve(Labyrinth laby) {
 		if (System.currentTimeMillis()-this.trigger_time>this.speed) {
 			int newXpos= this.xPos;

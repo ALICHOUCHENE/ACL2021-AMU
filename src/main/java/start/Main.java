@@ -34,6 +34,7 @@ public class Main {
 		
 		for (int level = 1; level<= numOfLevels ; level++) {
 			// creation du jeu particulier et de son afficheur
+			
 			PacmanGame game = new PacmanGame("helpFilePacman.txt",level);
 			MainPainter painter = new MainPainter(game);
 			PacmanController controller = new PacmanController();
@@ -58,6 +59,7 @@ public class Main {
 					System.out.println("Doesn't want to play again");
 				}
 				//try again
+				
 				level=0;
 				GameOverPainter.setTryAgain(false);	
 			}else

@@ -8,8 +8,9 @@ public class Life extends Tile {
 			this.setCanWalkOn(true);
 			this.setFinishesGame(false);
 			this.setType("Floor");
-			//this.setColor(Color.BLACK);
+
 			// add image path
+			
 			this.setImageSource("./images/heart.png");
 		}
 		
@@ -22,9 +23,11 @@ public class Life extends Tile {
 			this.setImageSource("./images/grass.png");
 		}
 		
+		
 	public void setXpos(int xPos) {
 		this.xpos=xPos;
 	}
+	
 	
 	public void setYpos(int yPos) {
 		this.yPos=yPos;
@@ -33,14 +36,17 @@ public class Life extends Tile {
 		return(this.xpos);
 	}
 	
+	
 	public int getYpos() {
 		return(this.yPos);
 	}
 	public boolean getState() {
 		return(this.exist);
 	}
+	
 	public void setState() {
 		this.exist=false;
 	}
+	
 	
 }

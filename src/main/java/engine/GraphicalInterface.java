@@ -26,13 +26,16 @@ public class GraphicalInterface  {
 	public GraphicalInterface(GamePainter gamePainter, GameController gameController){
 		JFrame f=new JFrame();
 	    //f.setLocationRelativeTo(null);
+		
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// attacher le panel contenant l'afficheur du game
+		
 		this.panel=new DrawingPanel(gamePainter);
 		f.setContentPane(this.panel);
 		
 		// attacher controller au panel du game
+		
 		this.panel.addKeyListener(gameController);	
 		
 		f.pack();
@@ -49,6 +52,7 @@ public class GraphicalInterface  {
 	public void paint() {
 		this.panel.drawGame();	
 	}
+	
 	
 	
 	

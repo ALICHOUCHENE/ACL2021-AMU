@@ -8,6 +8,7 @@ public class Monster extends GameCharacter {
 	String[] frames = { "./images/monster/monster.png", "./images/monster/monster1.png", "./images/monster/monster2.png"};
 	
 	//constructors
+	
 	public Monster () {
 		super();
 		this.setImageSource(frames[0]);
@@ -21,6 +22,7 @@ public class Monster extends GameCharacter {
 
 	
 	// animating the moving of the monster
+	
 	public String getframe() {
 		if (getImageSource()==(frames[0])) {
 			

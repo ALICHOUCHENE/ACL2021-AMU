@@ -2,6 +2,7 @@ package projectACL;
 
 import java.awt.Color;
 
+
 public class Door extends Tile{
 	public Door(){
 		this.setCanWalkOn(true);
@@ -10,5 +11,6 @@ public class Door extends Tile{
 		//this.setColor(Color.GREEN);
 		this.setImageSource("./images/door.png");
 	}
+	
 	
 }

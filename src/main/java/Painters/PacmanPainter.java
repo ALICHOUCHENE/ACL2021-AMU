@@ -39,5 +39,8 @@ public class PacmanPainter {
 			e.printStackTrace();
 		}	
 		
+	
 	}
+	
 }
+

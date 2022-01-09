@@ -10,4 +10,5 @@ public class Floor extends Tile {
 		this.setColor(Color.WHITE);
 		this.setImageSource("./images/grass.png");
 	}
+	
 }
