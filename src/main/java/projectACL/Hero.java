@@ -2,6 +2,7 @@
 package projectACL;
 
 import engine.Cmd;
+import model.PacmanGame;
 
 public class Hero extends GameCharacter {
 
@@ -13,19 +14,31 @@ public class Hero extends GameCharacter {
 						"./images/hero/shoot/shoot.png", "./images/hero/shoot/shootright.png"
 					};
 
-	private int live=3;
 
 	//constructors
+		private static int lives=3;
 		private Cmd last_move = Cmd.RIGHT;
 		
+
 		public Hero () {
-				super();
-				this.setImageSource(frames[0]);
-			}
+			super();
+			this.setImageSource(frames[0]);
+			if (!PacmanGame.isNextLevel()) 
+				lives=3;
+		}
 			
 		public Hero(int xPos, int yPos) {
 			super(xPos,yPos);
 			this.setImageSource(frames[0]);
+			if (!PacmanGame.isNextLevel()) 
+				lives=3;
+		}
+		
+		public int getlives() {
+			return lives;
+		}
+		public void lose1HP (){
+			lives-=1;
 		}
 		
 		
@@ -199,8 +212,8 @@ public class Hero extends GameCharacter {
 		}
 		
 		public void addLife() {
-			if(this.live<3)
-				live++;
+			if(lives<3)
+				lives++;
 		}
 
 	

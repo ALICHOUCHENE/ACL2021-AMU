@@ -17,11 +17,7 @@ public class HomeScreenPainter {
     public static HomeScreenPanel homescreen;
     private static boolean gameStarted = false;
     
-    public static void HelpWindow() {                   // M�thode qui permet d'afficher la fen�tre HELP
 
-       
-    }
-    
     public static void HomeScreenPaint() {                //METHODE POUR DESSINER LE HOMESCREEN
         JFrame fenetre= new JFrame("Jeu Pacman");			//FENETRE DU HOMESCREEN
 

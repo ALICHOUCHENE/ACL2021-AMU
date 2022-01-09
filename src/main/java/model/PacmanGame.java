@@ -46,6 +46,8 @@ public class PacmanGame implements Game {
 	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	private long gameTime;
 	private ArrayList<Life> Lives;
+	
+	private static boolean nextLevel = false;
 
 	
 	public PacmanGame(String source, int level) {
@@ -63,6 +65,7 @@ public class PacmanGame implements Game {
 		}
 
 		this.generateGame(level);
+		PacmanGame.setNextLevel(false);
 
 	}
 
@@ -135,20 +138,26 @@ public class PacmanGame implements Game {
 	
 	public boolean isFinished() {
 		boolean state=false;
-		state=(this.laby.getFinishLine()[0]==hero.getxPos()) & (this.laby.getFinishLine()[1]==hero.getyPos());
+		state=(this.laby.getFinishLine()[0]==hero.getxPos()) && (this.laby.getFinishLine()[1]==hero.getyPos());
 		return(state);
 	}	
 	
 	public boolean isGameOver() {
 		for(int i = 0; i<monsters.size();i++) {
 			if(monsters.get(i).getxPos()==hero.getxPos() & monsters.get(i).getyPos()==hero.getyPos()) {
-				
-				return true;
-			}
-		}
+				hero.lose1HP();
+				System.out.println(hero.getlives());
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+}}
+
+		if (hero.getlives()<=0) {return true;}
 		return false;
-	}
-	
+}
 	
 	private void generateGame(int level) {
 		this.laby=new Labyrinth(level);
@@ -317,6 +326,15 @@ public class PacmanGame implements Game {
 	public void setHero(Hero hero) {
 		this.hero = hero;
 	}
+
+	public static boolean isNextLevel() {
+		return nextLevel;
+	}
+
+	public static void setNextLevel(boolean nextLevel) {
+		PacmanGame.nextLevel = nextLevel;
+	}
+	
 	
 	
 

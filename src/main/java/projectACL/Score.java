@@ -22,10 +22,15 @@ public class Score {
 		return l;
 	}
 	
-	
+	public void loseHP() {
+		if ((hero.getxPos() == monster.getxPos()) && (hero.getyPos()==monster.getyPos())) {
+			hero.lose1HP();
+			
+		}}
+		
 	public boolean heroDead() {
 		boolean state=false;
-		if ((hero.getxPos() == monster.getxPos()) && (hero.getyPos()==monster.getyPos())) {
+		if (hero.getlives()<=0) {
 			state=true;
 			
 		}
