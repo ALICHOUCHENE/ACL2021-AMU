@@ -220,6 +220,7 @@ public class PacmanGame implements Game {
 				
 				
 			}
+			// update icone
 			
 			if ((xheart!=xHero | yheart!=yHero) & Lives.get(i).getState()==false) 
 				Lives.get(i).updateIcone2();
@@ -338,4 +339,6 @@ public class PacmanGame implements Game {
 	
 	
 
+	
+	
 }

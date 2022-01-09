@@ -9,7 +9,7 @@ public class Wormhole extends Tile {
 		this.setType("Floor");
 		this.setColor(Color.BLACK);
 		this.setTeleporte(true);
-		//this.setImageSource("./images/grass.png");
+		//this.setImageSource("./images/wormhole.png");
 	}
 }
 

@@ -45,11 +45,13 @@ public class Main {
 			
 			if ((level==2) & (game.isFinished()==true)) {
 				//show the game won panel
+				
 				GameWonPainter.draw();
 				break;
 			};
 			if (game.isGameOver()) {
 				//show the game over panel
+				
 				GameOverPainter.draw();
 				System.out.println(GameOverPainter.TryAgain());
 				while (GameOverPainter.TryAgain()==false) {

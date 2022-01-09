@@ -46,6 +46,7 @@ public class MainPainter implements GamePainter{
 	}
 
 	
+	
 	@Override
 	public void draw(BufferedImage im) {
 		LabyrinthPainter.colorLabyrinth(im, tiles,pacman);
