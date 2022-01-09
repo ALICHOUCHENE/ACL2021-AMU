@@ -14,7 +14,7 @@ public class Bullet {
 	private long trigger_time;
 	private int speed;
 	private String imageSource; 
-	private String[] sprites = {"./images/fireballUP.png", "./images/fireballDOWN.png", "./images/fireballRIGHT.png", "./images/fireballLEFT.png"};
+	private String[] sprites = {"./images/fireball/fireballUP.png", "./images/fireball/fireballDOWN.png", "./images/fireball/fireballRIGHT.png", "./images/fireball/fireball.png"};
 	
 	public Bullet(Hero pacman, Labyrinth laby) {
 		this.direction=pacman.getLast_move();
@@ -34,19 +34,19 @@ public class Bullet {
 			switch(this.direction) {
 			case UP:
 				newYpos--;
-				setImageSource("./images/fireball/fireballUP.png");
+				setImageSource(sprites[0]);
 				break;
 			case DOWN:
 				newYpos++;
-				setImageSource("./images/fireball/fireballDOWN.png");
+				setImageSource(sprites[1]);
 				break;
 			case RIGHT:
 				newXpos++;
-				setImageSource("./images/fireball/fireballRIGHT.png");
+				setImageSource(sprites[2]);
 				break;
 			case LEFT:
 				newXpos--;
-				setImageSource("./images/fireball/fireball.png");
+				setImageSource(sprites[3]);
 				break;
 			default:
 				break;			

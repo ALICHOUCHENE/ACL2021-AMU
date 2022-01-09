@@ -2,13 +2,16 @@ package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import projectACL.Hero;
 import projectACL.Labyrinth;
+
 
 
 
@@ -45,9 +48,9 @@ class TestHero {
 	@Test
 	public void testMoveUp() {
 		Hero instance;
-		instance=new Hero(1,2);
+		instance=new Hero(2,2);
 		instance.moveUp();
-		assertEquals(instance.getyPos(),0);
+		assertEquals(instance.getyPos(),1);
 		
 	}
 	
@@ -87,6 +90,22 @@ class TestHero {
 
 		
 	}
+	
+	@Test
+	public void testCreateOnWall() {
+		Hero instance;
+		instance=new Hero(0,11);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> instance.getxPos());
+	}
+	
+	@Test
+	public void testCreateOutsideLaby() {
+		Hero instance;
+		instance=new Hero(100,100);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> instance.getxPos());
+	}
+	
+	
 	
  
 

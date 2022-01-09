@@ -42,6 +42,12 @@ class TestLabyrinth {
 		assertNotNull(instance);
 	}
 	
+	@Test
+	public void testCreationNULL() {
+		Labyrinth instance; 
+		instance=new Labyrinth(1);
+		assertNotNull(instance);
+	}
 	
 	@Test
 	public void testEdgeLeft() {
