@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,6 +43,12 @@ class TestLabyrinth {
 		assertNotNull(instance);
 	}
 	
+	@Test
+	public void testCreationNULL() {
+		Labyrinth instance; 
+		instance=new Labyrinth(1);
+		Assertions.assertThrows(IllegalArgumentException.class, () -> Labyrinth.getDimX()); //Expected .getDimx() to throw, but it didn't
+	}
 	
 	@Test
 	public void testEdgeLeft() {
@@ -78,6 +85,8 @@ class TestLabyrinth {
 		
 		assertFalse(Labyrinth.validatePos(2, 7));
 	}
+	
+
 	
 
 }

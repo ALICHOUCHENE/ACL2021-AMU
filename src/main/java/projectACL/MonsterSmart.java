@@ -2,9 +2,12 @@ package projectACL;
 
 import java.util.Random;
 
+import engine.Cmd;
+
 public class MonsterSmart extends Monster {
 	
-	String[] frames = { "./images/monster/monsterSmart.png", "./images/monster/monsterSmart.png", "./images/monster/monsterSmart.png"};
+	private Cmd lastmove;
+	String[] frames = { "./images/monster/monsterSmart.png", "./images/monster/monsterSmartLeft.png", "./images/monster/monsterSmartRight.png"};
 	
 	//constructors
 	public MonsterSmart () {
@@ -20,14 +23,26 @@ public class MonsterSmart extends Monster {
 	
 	// animating the moving of the monster
 	public String getframe() {
-		if (getImageSource()==(frames[0])) {
-			
-			return(frames[1]);
+		
+		String frame="";
+		switch(getLastMove()) {
+		
+		case RIGHT:
+			 frame= frames[2];
+			 break;
+		case LEFT:
+			frame=frames[1];
+			break;
+		case UP:
+			frame=frames[0];
+			break;
+		case DOWN:
+			frame= frames[0];
+			break;
+		
 		}
-		else if (getImageSource()==(frames[1])) {
-			return(frames[2]);
-		}
-		else return(frames[0]);
+		return(frame);
+		
 	}
 	
 public void move(Hero hero) {
@@ -43,11 +58,13 @@ public void move(Hero hero) {
 		
 		
 		
+		
 		if (xhero<=xmonster & yhero<=ymonster) {
 		
 			if( Labyrinth.validatePos(xmonster-1, ymonster) ) {
 			
 				xmonster--;	
+				setLastMove( Cmd.LEFT) ;
 				newxPos=xmonster;
 				newyPos=ymonster;
 				
@@ -56,6 +73,7 @@ public void move(Hero hero) {
 			else if( Labyrinth.validatePos(xmonster, ymonster-1) ) {
 			
 				ymonster--;	
+				setLastMove(Cmd.DOWN);
 				newxPos=xmonster;
 				newyPos=ymonster;
 				
@@ -74,6 +92,7 @@ public void move(Hero hero) {
 					if( Labyrinth.validatePos(xmonster+1, ymonster)) {
 						
 							xmonster++;	
+							setLastMove(Cmd.RIGHT);
 							newxPos=xmonster;
 							newyPos=ymonster;
 								
@@ -82,6 +101,7 @@ public void move(Hero hero) {
 					else if( Labyrinth.validatePos(xmonster-1, ymonster) ) {
 						
 						xmonster--;	
+						setLastMove(Cmd.LEFT);
 						newxPos=xmonster;
 						newyPos=ymonster;
 					}
@@ -91,6 +111,7 @@ public void move(Hero hero) {
 					else if(Labyrinth.validatePos(xmonster, ymonster-1)) {
 						
 							ymonster--;	
+							setLastMove(Cmd.DOWN);
 							newxPos=xmonster;
 							newyPos=ymonster;
 							
@@ -107,6 +128,7 @@ public void move(Hero hero) {
 			
 			if( Labyrinth.validatePos(xmonster-1, ymonster)) {
 					xmonster--;	
+					setLastMove(Cmd.LEFT);
 					newxPos=xmonster;
 					newyPos=ymonster;
 						
@@ -114,6 +136,7 @@ public void move(Hero hero) {
 			else if( Labyrinth.validatePos(xmonster, ymonster+1)) {
 				
 					ymonster++;	
+					setLastMove(Cmd.UP);
 					newxPos=xmonster;
 					newyPos=ymonster;
 					
@@ -131,6 +154,7 @@ public void move(Hero hero) {
 			if( Labyrinth.validatePos(xmonster+1, ymonster)) {
 				
 					xmonster++;	
+					setLastMove(Cmd.RIGHT);
 					newxPos=xmonster;
 					newyPos=ymonster;
 						
@@ -138,6 +162,7 @@ public void move(Hero hero) {
 			 if( Labyrinth.validatePos(xmonster, ymonster+1)) {
 				
 					ymonster++;	
+					setLastMove(Cmd.UP);
 					newxPos=xmonster;
 					newyPos=ymonster;
 
@@ -163,6 +188,13 @@ public void move(Hero hero) {
 	public String toString() {
         return "Monster Position: ( " + this.getxPos() + " , " + this.getyPos() + " )";
     }
+	
+	public Cmd getLastMove() {
+		return(lastmove);	
+	}
+	public void setLastMove(Cmd lastmove) {
+		this.lastmove=lastmove;
+	}
 	
 	
 }

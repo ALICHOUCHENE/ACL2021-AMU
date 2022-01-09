@@ -9,11 +9,15 @@ public class Hero extends GameCharacter {
 						"./images/hero/move/hero.png", "./images/hero/move/hero1.png", 
 						"./images/hero/move/hero2.png", "./images/hero/move/hero3.png",
 						"./images/hero/move/heroleft.png", "./images/hero/move/heroleft1.png",
-						"./images/hero/move/heroleft2.png", "./images/hero/move/heroleft3.png" 
+						"./images/hero/move/heroleft2.png", "./images/hero/move/heroleft3.png",
+						"./images/hero/shoot/shoot.png", "./images/hero/shoot/shootright.png"
 					};
+
 	private int live=3;
+
 	//constructors
 		private Cmd last_move = Cmd.RIGHT;
+		
 		public Hero () {
 				super();
 				this.setImageSource(frames[0]);
@@ -85,7 +89,7 @@ public class Hero extends GameCharacter {
 				break;
 				
 			case IDLE:
-				if( (getImageSource()== frames[2]) | (getImageSource()==frames[3]) |  (getImageSource()==frames[4]) | (getImageSource()==frames[5])) {
+				if( (getImageSource()== frames[2]) | (getImageSource()==frames[3]) |  (getImageSource()==frames[4]) | (getImageSource()==frames[5]) ) {
 					frame = frames[0];
 				}
 				else if ((getImageSource()== frames[6]) | (getImageSource()==frames[7]) |  (getImageSource()==frames[8]) | (getImageSource()==frames[9])) {
@@ -93,7 +97,9 @@ public class Hero extends GameCharacter {
 					frame = frames[1];
 				}
 			}
+			
 			return(frame);
+			
 		}
 		
 		//update hero's position
@@ -170,9 +176,9 @@ public class Hero extends GameCharacter {
 		}
 
 		
-		public void teleporte( int x , int y) {
-			int newXPos= x;
-			int newYPos= y;
+		public void teleporte( int[] newPos) {
+			int newXPos= newPos[0];
+			int newYPos= newPos[1];
 			if (Labyrinth.validatePos(newXPos, newYPos)) { 
 				this.setxPos(newXPos);
 				this.setyPos(newYPos);
@@ -189,12 +195,20 @@ public class Hero extends GameCharacter {
 
 		public void setLast_move(Cmd last_move) {
 			this.last_move = last_move;
-		}		
+		
+		}
 		
 		public void addLife() {
 			if(this.live<3)
 				live++;
 		}
+
+	
+
+		}
 		
+
 		
-}
+				
+		
+

@@ -74,7 +74,9 @@ public class PacmanGame implements Game {
 
 	public void evolve(Cmd commande) {
 		//System.out.println("Execute "+commande);
-
+		
+		this.hero.teleporte();
+		
 		switch (commande) {
 		
 		case RIGHT:
@@ -95,16 +97,19 @@ public class PacmanGame implements Game {
 		
 		case SHOOT:
 			this.generateBullet();
+			//hero.shoot(); TODO
 		break;
 		
 		case IDLE:
 			break;
 		}
+		//teleporte
 		
+		
+		//
 		bulletKillMonster();
 		
 		// evolve monsters
-		
 		moveMonsters();
 		
 		// evolve bullets
@@ -232,7 +237,9 @@ public class PacmanGame implements Game {
 		long currTime= System.currentTimeMillis();
 		if((currTime-gameTime>500)& (!this.monsters.isEmpty())) {
 			for(int i = 0; i<monsters.size();i++) {
-				monsters.get(i).move(this.hero);
+				if(!monsters.get(i).teleporte()) {
+					monsters.get(i).move(this.hero);
+				}
 			}
 			this.gameTime= System.currentTimeMillis();
 		}
